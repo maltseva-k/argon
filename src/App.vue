@@ -5,17 +5,19 @@
 </template>
 
 <script>
-import EmptyLayout from '@/components/layouts/EmptyLayout'
+import SignInLayout from '@/components/layouts/SignInLayout'
+import SignUpLayout from '@/components/layouts/SignUpLayout'
 import MainLayout from '@/components/layouts/MainLayout'
 
 export default {
   components: {
-    EmptyLayout,
+    SignInLayout,
+    SignUpLayout,
     MainLayout
   },
   computed: {
     layout () {
-      return (this.$route.meta.layout || 'Empty') + '-layout'
+      return (this.$route.meta.layout || 'SignIn') + '-layout'
     }
   }
 }

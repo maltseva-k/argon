@@ -10,13 +10,13 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    meta: { layout: 'Empty' },
+    meta: { layout: 'SignIn' },
     component: () => import('../views/LoginPage')
   },
   {
     path: '/register',
     name: 'register',
-    meta: { layout: 'Empty' },
+    meta: { layout: 'SignUp' },
     component: () => import('../views/RegisterPage')
   },
   {
@@ -40,7 +40,7 @@ const routes = [
   {
     path: '/:pathMatch(.*)*',
     name: 'pagenotfound',
-    meta: { layout: 'Empty' },
+    meta: { layout: 'SignIn' },
     component: () => import('../views/PageNotFound')
   }
 ]

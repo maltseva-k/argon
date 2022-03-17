@@ -1,25 +1,25 @@
 <template>
     <div>
-      <div class="flex justify-between">
+      <div class="flex justify-around g-x-2">
         <card-for-dashboard />
         <card-for-dashboard />
         <card-for-dashboard />
         <card-for-dashboard />
       </div>
       <div class="container flex justify-between">
-        <div>
+        <div class="basis-2/3">
           <p>график</p>
         </div>
-        <div>
+        <div class="basis-1/3">
           <p>диаграма</p>
         </div>
       </div>
-      <div class="flex justify-between">
-        <div class="basis-1/2">
-
+      <div class="flex justify-between gap-x-8">
+        <div class="basis-2/3">
+          <table-with-hover-state />
         </div>
-        <div class="basis-1/2">
-
+        <div class="basis-1/3">
+          <table-with-scale />
         </div>
       </div>
     </div>
@@ -28,11 +28,15 @@
 <script>
 
 import CardForDashboard from '@/components/CardForDashboard'
+import TableWithHoverState from '@/components/TableWithHoverState'
+import TableWithScale from '@/components/TableWithScale'
 
 export default {
   name: 'DashboardPage',
   components: {
-    CardForDashboard
+    CardForDashboard,
+    TableWithHoverState,
+    TableWithScale
   }
 }
 </script>

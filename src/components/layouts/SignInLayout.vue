@@ -1,30 +1,26 @@
 <template>
-  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')]">
+  <div class="bg-no-repeat bg-top bg-[url('/src/images/BackgroundCitySmall.png')]">
     <nav-bar />
-    <div class="flex">
-      <side-bar />
-      <main class="w-full">
-        <main-loader v-if="isLoading"/>
-        <router-view />
-      </main>
+    <main>
+      <main-loader v-if="isLoading"/>
+      <router-view />
+    </main>
+    <div>
+      <footer-of-page />
     </div>
-    <footer-of-page />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
-import SideBar from '@/components/SideBar'
 import FooterOfPage from '@/components/FooterOfPage'
 import MainLoader from '@/components/MainLoader'
 
 export default {
-  name: 'MainLayout',
   components: {
     MainLoader,
-    NavBar,
-    SideBar,
-    FooterOfPage
+    FooterOfPage,
+    NavBar
   },
   data () {
     return {

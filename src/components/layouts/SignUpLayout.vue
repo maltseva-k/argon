@@ -5,7 +5,9 @@
       <main-loader v-if="isLoading"/>
       <router-view />
     </main>
-    <footer-of-page />
+    <div>
+      <footer-of-page />
+    </div>
   </div>
 </template>
 
