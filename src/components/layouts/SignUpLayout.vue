@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-auto bg-no-repeat bg-top mt-5 bg-[url('/src/images/BackgroundCity.png')]">>
     <nav-bar />
     <main>
       <main-loader v-if="isLoading"/>
