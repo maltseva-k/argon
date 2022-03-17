@@ -1,11 +1,22 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <component :is="layout">
+    <router-view />
+  </component>
 </template>
 
-<style lang="scss">
+<script>
+import EmptyLayout from '@/components/layouts/EmptyLayout'
+import MainLayout from '@/components/layouts/MainLayout'
 
-</style>
+export default {
+  components: {
+    EmptyLayout,
+    MainLayout
+  },
+  computed: {
+    layout () {
+      return (this.$route.meta.layout || 'Empty') + '-layout'
+    }
+  }
+}
+</script>

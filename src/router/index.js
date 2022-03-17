@@ -4,15 +4,44 @@ const routes = [
   {
     path: '/',
     name: 'home',
+    meta: { layout: 'Main' },
     component: () => import('../views/DashboardPage')
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/login',
+    name: 'login',
+    meta: { layout: 'Empty' },
+    component: () => import('../views/LoginPage')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    meta: { layout: 'Empty' },
+    component: () => import('../views/RegisterPage')
+  },
+  {
+    path: '/bill',
+    name: 'bill',
+    meta: { layout: 'Main' },
+    component: () => import('../views/BillingPage')
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    meta: { layout: 'Main' },
+    component: () => import('../views/ProfilePage')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    meta: { layout: 'Main' },
+    component: () => import('../views/TablesPage')
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'pagenotfound',
+    meta: { layout: 'Empty' },
+    component: () => import('../views/PageNotFound')
   }
 ]
 

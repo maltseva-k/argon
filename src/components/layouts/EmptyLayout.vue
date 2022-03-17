@@ -1,24 +1,32 @@
 <template>
   <div>
     <nav-bar />
-    <div>
-      <main-loader />
-      Здесь будут регистрация и логин
-    </div>
+    <main>
+      <main-loader v-if="isLoading"/>
+      <router-view />
+    </main>
     <footer-of-page />
   </div>
 </template>
 
 <script>
-import NavBar from '/src/components/NavBar'
-import FooterOfPage from '/src/components/FooterOfPage'
-import MainLoader from "@/components/MainLoader";
+import NavBar from '@/components/NavBar'
+import FooterOfPage from '@/components/FooterOfPage'
+import MainLoader from '@/components/MainLoader'
 
 export default {
   components: {
     MainLoader,
     FooterOfPage,
     NavBar
+  },
+  data () {
+    return {
+      isLoading: true
+    }
+  },
+  mounted () {
+    this.isLoading = false
   }
 }
 </script>
