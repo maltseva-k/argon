@@ -3,14 +3,14 @@
     <div class="mb-3 text-center">
       <h2 class="text-lg font-bold leading-loose mb-3">Sign In with</h2>
       <div class="flex justify-center gap-3">
-        <div class="w-24 h-24 bg-white border-1 border border-gray-300 rounded-lg">
-          <img class="w-12 h-12 mx-auto mt-6" src="../images/FacebookIcon.svg" alt="FacebookIcon">
+        <div class="w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
+          <img class="w-10 h-10 mx-auto mt-4" src="../images/FacebookIcon.svg" alt="FacebookIcon">
         </div>
-        <div class="w-24 h-24 bg-white border-1 border border-gray-300 rounded-lg">
-          <img class="w-12 h-12 mx-auto mt-6" src="../images/AppleIcon.svg" alt="AppleIcon">
+        <div class="w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
+          <img class="w-10 h-10 mx-auto mt-4" src="../images/AppleIcon.svg" alt="AppleIcon">
         </div>
-        <div class="w-24 h-24 bg-white border-1 border border-gray-300 rounded-lg">
-          <img class="w-10 h-10 mx-auto mt-7" src="../images/GoogleIcon.svg" alt="GoogleIcon">
+        <div class="w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
+          <img class="w-8 h-7 mx-auto mt-6" src="../images/GoogleIcon.svg" alt="GoogleIcon">
         </div>
       </div>
       <p class="text-gray-300 text-lg font-bold leading-loose mt-3">or</p>

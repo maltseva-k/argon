@@ -17,13 +17,20 @@
       <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-3">
         <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
           <li>
-            <a href="#" class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</a>
+            <router-link :to="{name: 'home'}" class="flex text-white hover:text-gray-900">
+              <img class="w-4 h-4 mr-2" src="../images/DashboardIcon.svg" alt="Dashboard Icon">
+              Dashboard
+            </router-link>
           </li>
           <li>
-            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+            <router-link :to="{name: 'login'}" class="text-white hover:text-gray-900">
+              Sign In
+            </router-link>
           </li>
           <li>
-            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+            <router-link :to="{name: 'register'}" class="text-white hover:text-gray-900">
+              Sign Up
+            </router-link>
           </li>
         </ul>
       </div>
