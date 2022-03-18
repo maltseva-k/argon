@@ -1,10 +1,14 @@
 <template>
-  <div class="h-auto bg-no-repeat bg-top mt-5 bg-[url('/src/images/BackgroundCity.png')]">>
-    <nav-bar />
-    <main>
-      <main-loader v-if="isLoading"/>
-      <router-view />
-    </main>
+  <div class="max-h-screen">
+    <div class="-z-10 h-96 bg-no-repeat bg-cover bg-center rounded-3xl bg-top mt-5 mr-5 ml-5 bg-[url('/src/images/BackgroundCitySmall.png')]">
+    </div>
+    <div class="absolute top-5 w-full pl-5 pr-5">
+      <nav-bar />
+      <main>
+        <main-loader v-if="isLoading" />
+        <router-view />
+      </main>
+    </div>
     <div>
       <footer-of-page />
     </div>

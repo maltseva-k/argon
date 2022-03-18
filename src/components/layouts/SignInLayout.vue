@@ -1,10 +1,12 @@
 <template>
-  <div class="bg-no-repeat rounded-b-3xl bg-top mt-5 bg-[url('/src/images/BackgroundCitySmall.png')]">
-    <nav-bar />
-    <main>
-      <main-loader v-if="isLoading"/>
-      <router-view />
-    </main>
+  <div class="h-screen">
+    <div class="h-full bg-no-repeat bg-top bg-[url('/src/images/BackgroundCity.png')]">
+      <nav-bar />
+      <main>
+        <main-loader v-if="isLoading"/>
+        <router-view />
+      </main>
+    </div>
     <div>
       <footer-of-page />
     </div>

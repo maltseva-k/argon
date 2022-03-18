@@ -1,5 +1,20 @@
 <template>
-  <form>
+  <form class="bg-white rounded-lg p-5 mt-20 shadow-md">
+    <div class="mb-3 text-center">
+      <h2 class="text-lg font-bold leading-loose mb-3">Sign In with</h2>
+      <div class="flex justify-center gap-3">
+        <div class="w-24 h-24 bg-white border-1 border border-gray-300 rounded-lg">
+          <img class="w-12 h-12 mx-auto mt-6" src="../images/FacebookIcon.svg" alt="FacebookIcon">
+        </div>
+        <div class="w-24 h-24 bg-white border-1 border border-gray-300 rounded-lg">
+          <img class="w-12 h-12 mx-auto mt-6" src="../images/AppleIcon.svg" alt="AppleIcon">
+        </div>
+        <div class="w-24 h-24 bg-white border-1 border border-gray-300 rounded-lg">
+          <img class="w-10 h-10 mx-auto mt-7" src="../images/GoogleIcon.svg" alt="GoogleIcon">
+        </div>
+      </div>
+      <p class="text-gray-300 text-lg font-bold leading-loose mt-3">or</p>
+    </div>
     <div class="mb-6">
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
       <input type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required="">
@@ -16,8 +31,12 @@
         <label for="remember" class="font-medium text-gray-900 dark:text-gray-300">Remember me</label>
       </div>
     </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+    <button type="submit" class=" w-full text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">
       Sign In
     </button>
+    <div class="flex justify-center gap-2">
+      <p class="text-gray-300 font-medium text-base mt-3">Don’t have an account?</p>
+      <router-link :to="{name: 'register'}" class="text-base text-gray-800 font-medium mt-3">Sign up</router-link>
+    </div>
   </form>
 </template>
