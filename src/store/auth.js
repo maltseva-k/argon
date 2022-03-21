@@ -10,12 +10,12 @@ export default {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password)
         const uid = await dispatch('getUid')
+        console.log('uid: ' + uid)
         await firebase.database().ref(`/users/${uid}/info`).set({
           name: name
         })
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     },
@@ -41,8 +41,7 @@ export default {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password)
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     },

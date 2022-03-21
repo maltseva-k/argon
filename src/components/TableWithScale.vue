@@ -7,91 +7,49 @@
             <thead class="bg-gray-100 dark:bg-gray-700">
             <tr>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Product Name
+                Project title
               </th>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Category
+                Budget
               </th>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Price
+                Status
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                Completion
+              </th>
+              <th scope="col" class="p-4">
+                <span class="sr-only">Edit</span>
               </th>
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple Imac 27"</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Desktop PC</td>
+            <tr
+              v-for="project in projects"
+              :key="project.id"
+              class="hover:bg-gray-100 dark:hover:bg-gray-700">
+              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ project.title }}
+              </td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                {{ project.budget }}
+              </td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{ project.status }}
+              </td>
               <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <div>
                   <div class="flex justify-between mb-1">
                     <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
+                    <span class="text-sm font-medium text-blue-700 dark:text-white">{{ project.completion }}</span>
                   </div>
                   <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
                     <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
                   </div>
                 </div>
               </td>
-            </tr>
-            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple MacBook Pro 17"</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Laptop</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
-                  </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-                  </div>
-                </div>
-              </td>
-
-            </tr>
-            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">iPhone 13 Pro</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Phone</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
-                  </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple Magic Mouse 2</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Accessories</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
-                  </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-                  </div>
-                </div>
-              </td>
-            </tr>
-            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple Watch Series 7</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">Accessories</td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <div>
-                  <div class="flex justify-between mb-1">
-                    <span class="text-base font-medium text-blue-700 dark:text-white">Flowbite</span>
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">45%</span>
-                  </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-                  </div>
-                </div>
+              <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
               </td>
             </tr>
             </tbody>
@@ -101,3 +59,13 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    projects: {
+      type: Array
+    }
+  }
+}
+</script>

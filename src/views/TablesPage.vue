@@ -4,7 +4,9 @@
       <table-with-hover-state />
     </div>
     <div class="mt-4">
-      <table-with-scale />
+      <table-with-scale
+        :projects="projects"
+      />
     </div>
   </div>
 </template>
@@ -12,6 +14,18 @@
 import TableWithHoverState from '@/components/TableWithHoverState'
 import TableWithScale from '@/components/TableWithScale'
 export default {
-  components: { TableWithScale, TableWithHoverState }
+  components: {
+    TableWithScale,
+    TableWithHoverState
+  },
+  data () {
+    return {
+      projects: []
+    }
+  },
+  async mounted () {
+    this.projects = await this.$store.dispatch('fetchProjects')
+    console.log(this.projects)
+  }
 }
 </script>
