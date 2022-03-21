@@ -20,12 +20,6 @@ const routes = [
     component: () => import('../views/RegisterPage')
   },
   {
-    path: '/bill',
-    name: 'bill',
-    meta: { layout: 'Main' },
-    component: () => import('../views/BillingPage')
-  },
-  {
     path: '/profile',
     name: 'profile',
     meta: { layout: 'Main' },

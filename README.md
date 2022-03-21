@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # argon
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# argon
+>>>>>>> 552355b... Initial commit

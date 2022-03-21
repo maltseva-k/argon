@@ -1,12 +1,11 @@
 import firebase from 'firebase/compat/app'
-import 'firebase/auth'
 
 export default {
   actions: {
     async registerUser ({ dispatch, commit }, {
+      name,
       email,
-      password,
-      name
+      password
     }) {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -15,7 +14,20 @@ export default {
           name: name
         })
       } catch (e) {
-        commit('setError', e)
+        console.log(e)
+        /* commit('setError', e) */
+        throw e
+      }
+    },
+    async loginUserWithGoogle ({ dispatch }) {
+      try {
+        const provider = new firebase.auth.GoogleAuthProvider()
+        await firebase
+          .auth()
+          .signInWithPopup(provider)
+      } catch (e) {
+        console.log(e)
+        /* commit('setError', e) */
         throw e
       }
     },
@@ -29,7 +41,8 @@ export default {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password)
       } catch (e) {
-        commit('setError', e)
+        console.log(e)
+        /* commit('setError', e) */
         throw e
       }
     },

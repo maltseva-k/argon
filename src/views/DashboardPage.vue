@@ -1,5 +1,6 @@
 <template>
     <div>
+      <button type="submit" @click="logout">Выйти из системы</button>
       <div class="flex justify-around g-x-2">
         <card-for-dashboard />
         <card-for-dashboard />
@@ -37,6 +38,13 @@ export default {
     CardForDashboard,
     TableWithHoverState,
     TableWithScale
+  },
+  methods: {
+    async logout () {
+      await this.$store.dispatch('logout')
+      console.log('вы вышли из системы!')
+      await this.$router.push('/login')
+    }
   }
 }
 </script>

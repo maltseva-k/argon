@@ -6,9 +6,9 @@ import store from './store'
 import './index.css'
 import 'flowbite'
 
-import { initializeApp } from 'firebase/app'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-/* import firebase from 'firebase/compat/app' */
+/* import { initializeApp } from 'firebase/app'
+import { getAuth, onAuthStateChanged } from 'firebase/auth' */
+import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 
@@ -21,19 +21,20 @@ const firebaseConfig = {
   appId: '1:180076498459:web:84629189296b4654fa32be',
   measurementId: 'G-8MT1PK0RGB'
 }
-const FirebaseApp = initializeApp(firebaseConfig)
-const auth = getAuth(FirebaseApp)
-onAuthStateChanged(auth, user => {
+firebase.initializeApp(firebaseConfig)
+
+createApp(App).use(store).use(router).mount('#app')
+
+/* const auth = getAuth(FirebaseApp) */
+
+/* onAuthStateChanged(auth, user => {
   if (user !== null) {
     console.log('logged in!')
   } else {
     console.log('no user!')
   }
-})
+}) */
 
-/* firebase.initializeApp(firebaseConfig) */
-
-createApp(App).use(store).use(router).mount('#app')
 /* const auth = getAuth(app)
 
 let app
