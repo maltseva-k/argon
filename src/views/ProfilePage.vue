@@ -1,11 +1,8 @@
 <template>
   <div>
-    <div class="flex justify-around bg-blue-50 h-10">
-      <img>
-      <p>Name</p>
-    </div>
-    <div class="flex justify-around">
-      <setting-card-for-profile class="w-1/2 min-h-min"/>
+    <div class="flex justify-start ml-10">
+      <setting-card-for-profile
+        class="w-1/2 min-h-min"/>
     </div>
     <div class="container">
       <h2>My projects</h2>
