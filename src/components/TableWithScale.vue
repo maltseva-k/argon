@@ -18,9 +18,6 @@
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Completion
               </th>
-              <th scope="col" class="p-4">
-                <span class="sr-only">Edit</span>
-              </th>
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -47,9 +44,6 @@
                     <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
                   </div>
                 </div>
-              </td>
-              <td class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
               </td>
             </tr>
             </tbody>

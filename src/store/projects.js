@@ -3,22 +3,30 @@ import 'firebase/compat/database'
 
 export default {
   actions: {
-    async createCategory ({
+    async createProject ({
       commit,
       dispatch
     }, {
       title,
-      limit
+      budget,
+      status,
+      completion
     }) {
       try {
         const uid = await dispatch('getUid')
-        const category = await firebase.database().ref(`/users/${uid}/categories`).push({
+        const category = await firebase.database().ref('/projects').push({
           title,
-          limit
+          budget,
+          status,
+          completion,
+          uid
         }) || {}
         return {
           title,
-          limit,
+          budget,
+          status,
+          completion,
+          uid,
           id: category.key
         }
       } catch (e) {
@@ -31,12 +39,12 @@ export default {
       dispatch
     }) {
       try {
-        const uid = await dispatch('getUid')
-        console.log('uid: ' + uid)
+        /* const uid = await dispatch('getUid')
+        console.log('uid: ' + uid) */
         const projects = []
         const snapshot = await firebase
           .database()
-          .ref(`/users/${uid}/projects`)
+          .ref('/projects')
           .get()
         const someProjects = snapshot.val() || {}
         Object.keys(someProjects).forEach(key => {
@@ -46,10 +54,43 @@ export default {
             budget: someProjects[key].budget,
             status: someProjects[key].status,
             completion: someProjects[key].completion,
+            uid: someProjects[key].uid,
             id: key
           })
         })
         console.log(projects)
+        return projects
+      } catch (e) {
+        console.log(e)
+        /* commit('setError', e) */
+        throw e
+      }
+    },
+    async fetchThisUsersProjects ({
+      commit,
+      dispatch
+    }) {
+      try {
+        const uid = await dispatch('getUid')
+        const projects = []
+        const snapshot = await firebase
+          .database()
+          .ref('/projects')
+          .orderByChild('uid')
+          .equalTo(uid)
+          .get()
+        const someProjects = snapshot.val() || {}
+        Object.keys(someProjects).forEach(key => {
+          console.log(key)
+          projects.push({
+            title: someProjects[key].title,
+            budget: someProjects[key].budget,
+            status: someProjects[key].status,
+            completion: someProjects[key].completion,
+            uid: someProjects[key].uid,
+            id: key
+          })
+        })
         return projects
       } catch (e) {
         console.log(e)
@@ -67,7 +108,7 @@ export default {
         throw e
       }
     },
-    async updateCategory (
+    async UpdateCategory (
       {
         commit, dispatch
       },

@@ -5,27 +5,44 @@
       <p>Name</p>
     </div>
     <div class="flex justify-around">
-      <setting-card-for-profile class="w-1/3 min-h-min"/>
-      <setting-card-for-profile class="w-1/3 min-h-min" />
-      <setting-card-for-profile class="w-1/3 min-h-min" />
+      <setting-card-for-profile class="w-1/2 min-h-min"/>
     </div>
     <div class="container">
-      <h2>Projects</h2>
-      <p>Architects design houses</p>
+      <h2>My projects</h2>
       <div class="flex justify-around">
-        <project-card-with-img class="w-1/4" />
-        <project-card-with-img class="w-1/4" />
-        <project-card-with-img class="w-1/4" />
-        <create-a-new-card class="w-1/4" />
+        <ul class="flex justify-around">
+            <li
+              v-for="project in usersProjects"
+              :key="project.id"
+              class="min-w-min min-h-min"
+              >
+              <users-project-card
+                :title="project.title"
+                :budget="project.budget"
+                :status="project.status"
+                :completion="project.completion"
+                 />
+            </li>
+        </ul>
+        <create-a-new-card class="min-w-min min-h-min items-center" />
       </div>
     </div>
   </div>
 </template>
 <script>
-import ProjectCardWithImg from '@/components/ProjectCardWithImg'
 import CreateANewCard from '@/components/CreateANewCard'
 import SettingCardForProfile from '@/components/SettingCardForProfile'
+import UsersProjectCard from '@/components/UsersProjectCard'
+
 export default {
-  components: { SettingCardForProfile, CreateANewCard, ProjectCardWithImg }
+  components: { UsersProjectCard, SettingCardForProfile, CreateANewCard },
+  data () {
+    return {
+      usersProjects: []
+    }
+  },
+  async mounted () {
+    this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
+  }
 }
 </script>
