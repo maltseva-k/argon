@@ -1,12 +1,15 @@
 <template>
   <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')]">
-    <nav-bar />
+
     <div class="flex">
       <side-bar />
-      <main class="w-full">
-        <main-loader v-if="isLoading"/>
-        <router-view />
-      </main>
+      <div>
+        <nav-bar />
+        <main class="w-full">
+          <main-loader v-if="isLoading"/>
+          <router-view />
+        </main>
+      </div>
     </div>
     <footer-of-page />
   </div>

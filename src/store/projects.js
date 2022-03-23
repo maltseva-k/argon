@@ -48,7 +48,6 @@ export default {
           .get()
         const someProjects = snapshot.val() || {}
         Object.keys(someProjects).forEach(key => {
-          console.log(key)
           projects.push({
             title: someProjects[key].title,
             budget: someProjects[key].budget,
@@ -81,7 +80,6 @@ export default {
           .get()
         const someProjects = snapshot.val() || {}
         Object.keys(someProjects).forEach(key => {
-          console.log(key)
           projects.push({
             title: someProjects[key].title,
             budget: someProjects[key].budget,

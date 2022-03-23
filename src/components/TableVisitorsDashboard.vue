@@ -7,36 +7,36 @@
             <thead class="bg-gray-100 dark:bg-gray-700">
             <tr>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Name
+                Page
               </th>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Email
+                Visitors
               </th>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Function
+                Unique visitors
               </th>
               <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                Status
+                Loyalty
               </th>
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
             <tr
-              v-for="user in users"
-              :key="user.uid"
+              v-for="visitor in visitors"
+              :key="visitor.index"
               class="hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ user.name }}
+                {{ visitor.page }}
               </td>
               <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                {{ user.email }}
+                {{ visitor.visitors }}
               </td>
               <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{ user.userFunction }}
+                {{ visitor.uniquevisitors }}
               </td>
               <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                online
+                {{ Math.ceil(visitor.uniquevisitors/visitor.visitors*100) + '%' }}
               </td>
             </tr>
             </tbody>
@@ -50,7 +50,7 @@
 <script>
 export default {
   props: {
-    users: {
+    visitors: {
       type: Array
     }
   }

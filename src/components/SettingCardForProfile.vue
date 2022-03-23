@@ -58,7 +58,6 @@ export default {
     this.name = user.name
     this.email = user.email
     this.userFunction = user.userFunction
-    console.log(user)
   },
   methods: {
     async updateUserInfo () {
@@ -68,7 +67,6 @@ export default {
         userFunction: this.userFunction
       }
       await this.$store.dispatch('updateUserInfo', formData)
-      console.log(formData)
     }
   }
 }

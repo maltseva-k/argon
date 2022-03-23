@@ -1,4 +1,5 @@
 import firebase from 'firebase/compat/app'
+import 'firebase/compat/database'
 
 export default {
   state: {
@@ -55,6 +56,28 @@ export default {
         })
       } catch (e) {
         commit('setError', e)
+        throw e
+      }
+    },
+    async fetchAllUsers ({
+      commit,
+      dispatch
+    }) {
+      try {
+        const allUsers = []
+        const snapshot = await firebase
+          .database()
+          .ref('/users')
+          .once('value')
+        const users = snapshot.val() || {}
+        Object.keys(users).forEach(key => {
+          const oneOf = users[key].info
+          allUsers.push(oneOf)
+        })
+        return allUsers
+      } catch (e) {
+        console.log(e)
+        /* commit('setError', e) */
         throw e
       }
     }
