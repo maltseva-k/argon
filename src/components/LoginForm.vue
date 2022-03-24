@@ -5,12 +5,12 @@
     <div class="mb-3 text-center">
       <h2 class="text-lg font-bold leading-loose mb-3">Sign In with</h2>
       <div class="flex justify-center gap-3">
-        <div class="w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
+        <div class="hidden w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
           <button>
             <img class="w-10 h-10 mx-auto mt-4" src="../images/FacebookIcon.svg" alt="FacebookIcon">
           </button>
         </div>
-        <div class="w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
+        <div class="hidden w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
           <button>
             <img class="w-10 h-10 mx-auto mt-4" src="../images/AppleIcon.svg" alt="AppleIcon">
           </button>

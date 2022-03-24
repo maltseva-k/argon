@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')] bg-slate-50">
+  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')] bg-slate-50 max-h-screen">
     <div class="flex pt-5"
     style="height: 100%">
       <side-bar
@@ -16,16 +16,12 @@
         </main>
       </div>
     </div>
-    <footer-of-page
-    style="flex: 0 0 0"
-    />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar'
 import SideBar from '@/components/SideBar'
-import FooterOfPage from '@/components/FooterOfPage'
 import MainLoader from '@/components/MainLoader'
 
 export default {
@@ -33,8 +29,7 @@ export default {
   components: {
     MainLoader,
     NavBar,
-    SideBar,
-    FooterOfPage
+    SideBar
   },
   data () {
     return {

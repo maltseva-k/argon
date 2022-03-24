@@ -1,5 +1,6 @@
 <template>
-    <div>
+  <main-loader v-if="loader" />
+    <div v-else>
       <div class="flex justify-around g-x-2 mb-5">
         <money-card
           :increment="moneyCard.increment"
@@ -46,6 +47,10 @@
           <social-table />
         </div>
       </div>
+      <div class="static bottom-0 left-0 w-full">
+        <footer-of-page
+        />
+      </div>
     </div>
 </template>
 
@@ -58,6 +63,8 @@ import MoneyCard from '@/components/MoneyCard'
 import ClientCard from '@/components/ClientCard'
 import SaleCard from '@/components/SaleCard'
 import UsersCard from '@/components/UsersCard'
+import MainLoader from '@/components/MainLoader'
+import FooterOfPage from '@/components/FooterOfPage'
 
 export default {
   name: 'DashboardPage',
@@ -70,6 +77,7 @@ export default {
       clientCard: {},
       salesCard: {},
       statistic: [],
+      loader: true,
       coffeeLabels: ['One', 'Two', 'Free'],
       coffeeDatasets: [
         {
@@ -84,6 +92,8 @@ export default {
     }
   },
   components: {
+    FooterOfPage,
+    MainLoader,
     UsersCard,
     SaleCard,
     ClientCard,
@@ -97,10 +107,10 @@ export default {
     this.visitors = await this.$store.dispatch('fetchVisitors')
     this.statistic = await this.$store.dispatch('fetchStatistic')
     this.moneyCard = this.statistic[0]
-    console.log(this.statistic)
     this.usersCard = this.statistic[1]
     this.clientCard = this.statistic[2]
     this.salesCard = this.statistic[3]
+    this.loader = false
   }
 }
 </script>

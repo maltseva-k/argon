@@ -4,7 +4,9 @@
         <main-loader v-if="isLoading"/>
         <router-view />
       </main>
-      <footer-of-page />
+      <div class="bg-white absolute bottom-0 left-0 w-full">
+        <footer-of-page />
+      </div>
     </div>
 </template>
 

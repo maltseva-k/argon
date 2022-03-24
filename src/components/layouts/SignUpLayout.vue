@@ -8,7 +8,7 @@
         <router-view />
       </main>
     </div>
-    <div>
+    <div class="bg-white absolute bottom-0 left-0 w-full">
       <footer-of-page />
     </div>
   </div>

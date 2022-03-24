@@ -1,9 +1,9 @@
 <template>
   <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-    <h2 class="mb-2 text-xl uppercase font-bold font-sans tracking-wide text-slate-300">About me</h2>
+    <h2 class="1 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">About me</h2>
     <form @submit.prevent="updateUserInfo">
       <div>
-        <label for="name" class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
         <div class="flex">
       <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
