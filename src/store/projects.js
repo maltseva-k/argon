@@ -14,7 +14,7 @@ export default {
     }) {
       try {
         const uid = await dispatch('getUid')
-        const category = await firebase.database().ref('/projects').push({
+        const project = await firebase.database().ref('/projects').push({
           title,
           budget,
           status,
@@ -27,7 +27,7 @@ export default {
           status,
           completion,
           uid,
-          id: category.key
+          id: project.key
         }
       } catch (e) {
         commit('setError', e)
@@ -96,11 +96,13 @@ export default {
         throw e
       }
     },
-    async deleteCategory ({ commit, dispatch }, id) {
+    async deleteProject ({ commit, dispatch }, id) {
       try {
         const uid = await dispatch('getUid')
+        console.log(uid)
 
-        await firebase.database().ref(`/users/${uid}/categories/${id}`).remove()
+        await firebase.database().ref(`/projects/${id}`).remove()
+        console.log('удалено!')
       } catch (e) {
         commit('setError', e)
         throw e

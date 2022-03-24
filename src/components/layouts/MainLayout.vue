@@ -1,6 +1,7 @@
 <template>
-  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')]">
-    <div class="flex pt-5">
+  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')] bg-slate-50">
+    <div class="flex pt-5"
+    style="height: 100%">
       <side-bar
         class="ml-5"/>
       <div class="w-full pl-5 pr-5">
@@ -9,11 +10,15 @@
         />
         <main>
           <main-loader v-if="isLoading"/>
-          <router-view />
+          <router-view
+          class="h-full"
+          />
         </main>
       </div>
     </div>
-    <footer-of-page />
+    <footer-of-page
+    style="flex: 0 0 0"
+    />
   </div>
 </template>
 

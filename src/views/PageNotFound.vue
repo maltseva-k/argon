@@ -1,45 +1,12 @@
 <template>
-  <div class="not-found-container">
-    <div class="not-found-status">404</div>
-    <div class="not-found">
-      <h1>Страница не найдена</h1>
+  <div class="container bg-white flex justify-between ml-auto mr-auto mt-auto rounded-2xl p-10 w-1/2">
+    <div class="text-center font-sans font-bold text-8xl tracking-wide text-blue-500 ml-auto mr-auto">404</div>
+    <div class="text-medium text-xl font-sans align-middle mt-auto mb-auto">
+      <h1 class="mt-2">Страница не найдена</h1>
       <p>К сожалению, страница, которую Вы запросили, не существует.</p>
       <p>
-        Вы можете перейти на <router-link :to="{ name: 'home' }">главную страницу</router-link>.
+        Вы можете перейти на <router-link :to="{ name: 'home' }" class="hover:text-blue-500">главную страницу</router-link>.
       </p>
     </div>
-
   </div>
 </template>
-
-<style>
-.not-found-container {
-  display: flex;
-  width: 50%;
-  background-color: white;
-  color: #404040;
-  vertical-align: middle;
-  margin-top: 40px;
-  padding: 20px;
-}
-.not-found {
-  display: block;
-  color: #666;
-}
-.not-found h1 {
-  margin: 30px 0 20px 0;
-}
-
-.not-found p {
-  font-size: 20px;
-  line-height: normal;
-}
-
-.not-found-status {
-  color: #bbb;
-  width: 30%;
-  font-size: 140px;
-  font-weight: bold;
-  text-align: center;
-}
-</style>

@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="SubmitHandler"
-    class="bg-white rounded-lg p-5 mt-20 shadow-md">
+    class="bg-white rounded-3xl p-5 shadow-md">
     <div class="mb-3 text-center">
       <h2 class="text-lg font-bold leading-loose mb-3">Sign In with</h2>
       <div class="flex justify-center gap-3">

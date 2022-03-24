@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div class="shadow-lg rounded-lg overflow-hidden">
-      <div class="py-3 px-5 bg-gray-50">Total orders</div>
       <div class="w-full h-full bg-gray-50 flex justify-around">
         <div
           v-for="order in orders"
           :key="order.index"
-          class="w-5 bg-blue-500"
+          class="w-5 bg-orange-400"
           :style="{height: order.sales}"
         > {{ order.sales }}
           <div
@@ -18,7 +16,6 @@
          </div>
       </div>
     </div>
-  </div>
 </template>
 <script>
 export default {
@@ -28,6 +25,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <!--

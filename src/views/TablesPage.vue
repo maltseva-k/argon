@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div>
+  <div class="">
+    <div class="h-3/6 my-auto">
       <table-with-hover-state
         :users="users"
       />
     </div>
-    <div class="mt-4">
+    <div class="mt-5 mb-5 h-3/6 my-auto">
       <table-with-scale
         :projects="projects"
       />

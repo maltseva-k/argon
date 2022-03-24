@@ -1,6 +1,6 @@
 <template>
-  <div class="max-h-screen">
-    <div class="-z-10 h-96 bg-no-repeat bg-cover bg-center rounded-3xl bg-top mt-5 mr-5 ml-5 bg-[url('/src/images/BackgroundCitySmall.png')]">
+  <div class="">
+    <div class="-z-10 h-96 bg-no-repeat bg-cover bg-center rounded-3xl bg-top mt-5 mr-5 ml-5 bg-[url('/src/images/BackgroundCitySmall.png')] ">
     </div>
     <div class="absolute top-5 w-full pl-5 pr-5">
       <main>

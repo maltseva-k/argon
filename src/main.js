@@ -12,6 +12,8 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 
+import VueChartsCSS from 'vue.charts.css'
+
 const firebaseConfig = {
   apiKey: 'AIzaSyDA04rN5cjeCMIqYS48fVYZn1CefxIub9I',
   authDomain: 'argon-admin-panel.firebaseapp.com',
@@ -28,7 +30,7 @@ firebase.initializeApp(firebaseConfig)
 let app
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
-    app = createApp(App).use(router).use(store).mount('#app')
+    app = createApp(App).use(router).use(store).use(VueChartsCSS).mount('#app')
   }
 })
 

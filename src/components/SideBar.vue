@@ -1,6 +1,6 @@
 <template>
   <aside class="w-64" aria-label="Sidebar">
-    <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded-xl dark:bg-gray-800 font-sans text-xl">
+    <div class="overflow-y-auto py-4 px-3 bg-white rounded-xl dark:bg-gray-800 font-sans text-xl">
       <a href="#" class="flex justify-center items-center w-full p-2">
         <div class="w-6 h-5 bg-transparent hover:shadow-md">
           <img src="../images/LogoArgon.svg" class="bg-transparent container" alt="Argon Logo">
