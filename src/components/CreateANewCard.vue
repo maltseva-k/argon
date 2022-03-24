@@ -70,6 +70,7 @@ export default {
       this.status = ''
       this.completion = ''
       console.log('Project create!')
+      this.$emit('createProject')
     }
   }
 }

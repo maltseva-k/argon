@@ -57,6 +57,7 @@ export default {
     async deleteThisProject () {
       await this.$store.dispatch('deleteProject', this.id)
       console.log(this.id)
+      this.$emit('deleteProject', this.id)
     }
   }
 }
