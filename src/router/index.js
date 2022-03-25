@@ -1,10 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import firebase from 'firebase/compat/app'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    meta: { layout: 'Main' },
+    meta: { layout: 'Main', auth: true },
     component: () => import('../views/DashboardPage')
   },
   {
@@ -22,13 +23,13 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    meta: { layout: 'Main' },
+    meta: { layout: 'Main', auth: true },
     component: () => import('../views/ProfilePage')
   },
   {
     path: '/table',
     name: 'table',
-    meta: { layout: 'Main' },
+    meta: { layout: 'Main', auth: true },
     component: () => import('../views/TablesPage')
   },
   {
@@ -43,5 +44,14 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser
+  // const requireAuth = to.matched.some(record => (record.meta).auth)
 
+  if (to.meta.auth && !currentUser) {
+    next('/login?message=login')
+  } else {
+    next()
+  }
+})
 export default router

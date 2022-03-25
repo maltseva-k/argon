@@ -17,6 +17,8 @@
           :key="updateUserCount"
           @showPrevPage="showPrevUsersPage"
           @showNextPage="showNextUsersPage"
+          :isPrevDisabled="isPrevUsersDisabled"
+          :isNextDisabled="isNextUsersDisabled"
         />
       </div>
 
@@ -79,7 +81,11 @@ export default {
       amountOfUsersOnPage: 3,
       thisUsersPage: 1,
       startUsersEl: 0,
-      finishUsersEl: 3
+      finishUsersEl: 3,
+      isPrevProjectsDisabled: false,
+      isPrevUsersDisabled: false,
+      isNextProjectsDisabled: false,
+      isNextUsersDisabled: false
     }
   },
   async mounted () {
@@ -88,68 +94,60 @@ export default {
       this.showProjectPaginate = true
       this.projectsOnThisPage = this.projects.slice(0, 3)
     }
+    this.isPrevProjectsDisabled = true
     this.users = await this.$store.dispatch('fetchAllUsers') || []
     if (this.users.length > 1) {
       this.showUsersPaginate = true
       this.usersOnThisPage = this.users.slice(0, 3)
     }
+    this.isPrevUsersDisabled = true
     this.loader = false
     console.log(this.users)
   },
   methods: {
     showPrevProjectsPage () {
       this.thisProjectPage -= 1
+      this.isNextProjectsDisabled = false
+      if (this.thisProjectPage === 1) {
+        this.isPrevProjectsDisabled = true
+      }
       this.startProjectEl -= this.amountOfProjectsOnPage
       this.finishProjectEl -= this.amountOfProjectsOnPage
-      /*       if (this.startEl < 0) {
-        this.isPrevDisabled = true
-        this.startEl = 0
-        this.finishEl = this.amountOfProjectsOnPage
-      } else {
-        this.isPrevDisabled = false
-      } */
       this.projectsOnThisPage = this.projects.slice(this.startProjectEl, this.finishProjectEl)
       this.updateProjectCount -= 1
     },
     showNextProjectsPage () {
       this.thisProjectPage += 1
+      this.isPrevProjectsDisabled = false
       this.startProjectEl += this.amountOfProjectsOnPage
       this.finishProjectEl += this.amountOfProjectsOnPage
-      /*       if (this.finishEl > this.usersProjects.length) {
-        this.isNextDisabled = true
-      } else {
-        this.isNextDisabled = false
-      } */
+      if (this.finishProjectEl >= this.projects.length - 1) {
+        this.isNextProjectsDisabled = true
+      }
       this.projectsOnThisPage = this.projects.slice(this.startProjectEl, this.finishProjectEl)
       this.updateProjectCount += 1
-      // slice([begin[, end]])
     },
     showPrevUsersPage () {
       this.thisUsersPage -= 1
+      this.isNextUsersDisabled = false
+      if (this.thisUsersPage === 1) {
+        this.isPrevUsersDisabled = true
+      }
       this.startUsersEl -= this.amountOfProjectsOnPage
       this.finishUsersEl -= this.amountOfProjectsOnPage
-      /*       if (this.startEl < 0) {
-        this.isPrevDisabled = true
-        this.startEl = 0
-        this.finishEl = this.amountOfProjectsOnPage
-      } else {
-        this.isPrevDisabled = false
-      } */
       this.usersOnThisPage = this.users.slice(this.startUsersEl, this.finishUsersEl)
       this.updateUserCount -= 1
     },
     showNextUsersPage () {
       this.thisUsersPage += 1
+      this.isPrevUsersDisabled = false
       this.startUsersEl += this.amountOfUsersOnPage
       this.finishUsersEl += this.amountOfUsersOnPage
-      /*       if (this.finishEl > this.usersProjects.length) {
-        this.isNextDisabled = true
-      } else {
-        this.isNextDisabled = false
-      } */
+      if (this.finishUsersEl >= this.users.length - 1) {
+        this.isNextUsersDisabled = true
+      }
       this.usersOnThisPage = this.users.slice(this.startUsersEl, this.finishUsersEl)
       this.updateUserCount += 1
-      // slice([begin[, end]])
     }
   }
 }

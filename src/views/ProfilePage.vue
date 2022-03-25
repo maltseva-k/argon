@@ -76,7 +76,9 @@ export default {
     if (this.usersProjects.length > 3) {
       this.projectsOnThisPage = this.usersProjects.slice(0, 3)
       this.showPaginate = true
+      this.isPrevDisabled = true
     }
+    this.isPrevDisabled = true
     this.loader = false
   },
   methods: {
@@ -89,27 +91,23 @@ export default {
     },
     showPrevPage () {
       this.thisPage -= 1
+      this.isNextDisabled = false
+      if (this.thisPage === 1) {
+        this.isPrevDisabled = true
+      }
       this.startEl -= this.amountOfProjectsOnPage
       this.finishEl -= this.amountOfProjectsOnPage
-      /*       if (this.startEl < 0) {
-        this.isPrevDisabled = true
-        this.startEl = 0
-        this.finishEl = this.amountOfProjectsOnPage
-      } else {
-        this.isPrevDisabled = false
-      } */
       this.projectsOnThisPage = this.usersProjects.slice(this.startEl, this.finishEl)
       this.updateCount += 1
     },
     showNextPage () {
       this.thisPage += 1
+      this.isPrevDisabled = false
       this.startEl += this.amountOfProjectsOnPage
       this.finishEl += this.amountOfProjectsOnPage
-      /*       if (this.finishEl > this.usersProjects.length) {
+      if (this.finishEl >= this.usersProjects.length - 1) {
         this.isNextDisabled = true
-      } else {
-        this.isNextDisabled = false
-      } */
+      }
       this.projectsOnThisPage = this.usersProjects.slice(this.startEl, this.finishEl)
       this.updateCount += 1
       // slice([begin[, end]])
