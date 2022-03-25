@@ -14,9 +14,9 @@
           :key="updateCount"
           class="flex justify-around w-full h-full">
             <li
-              v-for="project in usersProjects"
+              v-for="project in projectsOnThisPage"
               :key="project.id"
-              class="w-1/3 max-w-sm bg-white rounded-lg border hover:border-gray-200 hover:shadow-md dark:bg-gray-800 dark:border-gray-700"
+              class="w-1/3 min-w-min max-w-sm bg-white rounded-lg border hover:border-gray-200 hover:shadow-md dark:bg-gray-800 dark:border-gray-700"
               >
               <users-project-card
                 @deleteProject="deleteProject"
@@ -28,6 +28,14 @@
                  />
             </li>
         </ul>
+      <paginate-buttons
+        v-if="showPaginate"
+        :key="updateCount"
+        @showPrevPage="showPrevPage"
+        @showNextPage="showNextPage"
+        :isPrevDisabled="isPrevDisabled"
+        :isNextDisabled="isNextDisabled"
+      />
     </div>
     <div class="fixed bottom-0 left-0 w-full">
       <footer-of-page
@@ -41,18 +49,34 @@ import SettingCardForProfile from '@/components/SettingCardForProfile'
 import UsersProjectCard from '@/components/UsersProjectCard'
 import MainLoader from '@/components/MainLoader'
 import FooterOfPage from '@/components/FooterOfPage'
+import PaginateButtons from '@/components/PaginateButtons'
 
 export default {
-  components: { FooterOfPage, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
+  components: { PaginateButtons, FooterOfPage, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
   data () {
     return {
       usersProjects: [],
+      projectsOnThisPage: [],
+      showPaginate: false,
       updateCount: 0,
+      thisPage: 1,
+      startEl: 0,
+      finishEl: 3,
+      amountOfProjectsOnPage: 3,
+      isPrevDisabled: false,
+      isNextDisabled: false,
       loader: true
     }
   },
   async mounted () {
     this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
+    if (this.usersProjects.length <= 3) {
+      this.projectsOnThisPage = this.usersProjects
+    }
+    if (this.usersProjects.length > 3) {
+      this.projectsOnThisPage = this.usersProjects.slice(0, 3)
+      this.showPaginate = true
+    }
     this.loader = false
   },
   methods: {
@@ -62,6 +86,33 @@ export default {
     },
     async createProject () {
       this.usersProjects = await this.$store.dispatch('fetchThisUsersProjects')
+    },
+    showPrevPage () {
+      this.thisPage -= 1
+      this.startEl -= this.amountOfProjectsOnPage
+      this.finishEl -= this.amountOfProjectsOnPage
+      /*       if (this.startEl < 0) {
+        this.isPrevDisabled = true
+        this.startEl = 0
+        this.finishEl = this.amountOfProjectsOnPage
+      } else {
+        this.isPrevDisabled = false
+      } */
+      this.projectsOnThisPage = this.usersProjects.slice(this.startEl, this.finishEl)
+      this.updateCount += 1
+    },
+    showNextPage () {
+      this.thisPage += 1
+      this.startEl += this.amountOfProjectsOnPage
+      this.finishEl += this.amountOfProjectsOnPage
+      /*       if (this.finishEl > this.usersProjects.length) {
+        this.isNextDisabled = true
+      } else {
+        this.isNextDisabled = false
+      } */
+      this.projectsOnThisPage = this.usersProjects.slice(this.startEl, this.finishEl)
+      this.updateCount += 1
+      // slice([begin[, end]])
     }
   }
 }
