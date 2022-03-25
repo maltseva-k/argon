@@ -23,16 +23,14 @@
           class="w-1/4 shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl"
         />
       </div>
-      <div class="container flex justify-between">
-        <div class="basis-2/3">
+      <div class="w-full flex justify-between gap-x-8">
+        <div class="basis-2/3 p-0">
           <img src="../images/SalesImageDashboard.png">
         </div>
-        <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 mt-3 basis-1/3">
+        <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 basis-1/3 my-2">
           <h3 class="text-lg pl-5 font-bold font-sans tracking-wide text-slate-300">PERFORMANCE</h3>
           <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Total orders</h2>
-          <sales-for-month
-          :orders="orders"
-          />
+          <total-sale-scale />
         </div>
       </div>
       <div class="flex justify-between gap-x-8">
@@ -57,7 +55,6 @@
 <script>
 
 import SocialTable from '@/components/SocialTable'
-import SalesForMonth from '@/components/SalesForMonth'
 import TableVisitorsDashboard from '@/components/TableVisitorsDashboard'
 import MoneyCard from '@/components/MoneyCard'
 import ClientCard from '@/components/ClientCard'
@@ -65,6 +62,7 @@ import SaleCard from '@/components/SaleCard'
 import UsersCard from '@/components/UsersCard'
 import MainLoader from '@/components/MainLoader'
 import FooterOfPage from '@/components/FooterOfPage'
+import TotalSaleScale from '@/components/TotalSaleScale'
 
 export default {
   name: 'DashboardPage',
@@ -92,6 +90,7 @@ export default {
     }
   },
   components: {
+    TotalSaleScale,
     FooterOfPage,
     MainLoader,
     UsersCard,
@@ -99,7 +98,6 @@ export default {
     ClientCard,
     MoneyCard,
     TableVisitorsDashboard,
-    SalesForMonth,
     SocialTable
   },
   async mounted () {

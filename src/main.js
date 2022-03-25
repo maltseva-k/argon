@@ -12,6 +12,7 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 
+import 'charts.css'
 import VueChartsCSS from 'vue.charts.css'
 
 const firebaseConfig = {
