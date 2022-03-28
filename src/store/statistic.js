@@ -9,6 +9,7 @@ export default {
     }) {
       try {
         const statistic = []
+        /* const img = await firebase.storage.refFromURL('gs://argon-admin-panel.appspot.com/DashboardCardsIcons/ClientCard/ClientCard.svg') */
         const snapshot = await firebase
           .database()
           .ref('/statistic')
@@ -19,9 +20,11 @@ export default {
             title: someInfo[key].title,
             indicator: someInfo[key].indicator,
             increment: someInfo[key].increment,
+            img: someInfo[key].img,
             card: key
           })
         })
+
         return statistic
       } catch (e) {
         console.log(e)

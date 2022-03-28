@@ -1,34 +1,16 @@
 <template>
   <main-loader v-if="loader" />
     <div v-else>
-      <div class="flex justify-around g-x-2 mb-5">
-        <money-card
-          v-for="item in dashboardItems"
+      <div class="flex justify-around g-x-2 mb-5 gap-x-5">
+        <card-for-dashboard
+          v-for="item in statistic"
           :key="item.card"
+          :title="item.title"
           :increment="item.increment"
           :indicator="item.indicator"
-          class="w-1/4 shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl"
-        >
-          <template v-slot:icon>
-            <img :src="item.icon" class="w-3/4 h-3/4" alt="Money card">
-          </template>
-        </money-card>
-
-        <users-card
-          :increment="usersCard.increment"
-          :indicator="usersCard.indicator"
-          class="w-1/4 shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl"
-        />
-        <client-card
-          :increment="clientCard.increment"
-          :indicator="clientCard.indicator"
-          class="w-1/4 shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl"
-        />
-        <sale-card
-          :increment="salesCard.increment"
-          :indicator="salesCard.indicator"
-          class="w-1/4 shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl"
-        />
+          :card="item.card"
+          class="w-1/4"
+          />
       </div>
       <div class="w-full flex justify-between gap-x-8">
         <div class="basis-2/3 p-0">
@@ -59,12 +41,9 @@
 
 import SocialTable from '@/components/SocialTable'
 import TableVisitorsDashboard from '@/components/TableVisitorsDashboard'
-import MoneyCard from '@/components/MoneyCard'
-import ClientCard from '@/components/ClientCard'
-import SaleCard from '@/components/SaleCard'
-import UsersCard from '@/components/UsersCard'
 import MainLoader from '@/components/MainLoader'
 import TotalSaleScale from '@/components/TotalSaleScale'
+import CardForDashboard from '@/components/CardForDashboard'
 
 export default {
   name: 'DashboardPage',
@@ -81,12 +60,9 @@ export default {
     }
   },
   components: {
+    CardForDashboard,
     TotalSaleScale,
     MainLoader,
-    UsersCard,
-    SaleCard,
-    ClientCard,
-    MoneyCard,
     TableVisitorsDashboard,
     SocialTable
   },
@@ -104,10 +80,6 @@ export default {
     this.orders = await this.$store.dispatch('fetchOrders')
     this.visitors = await this.$store.dispatch('fetchVisitors')
     this.statistic = await this.$store.dispatch('fetchStatistic')
-    this.moneyCard = this.statistic[0]
-    this.usersCard = this.statistic[1]
-    this.clientCard = this.statistic[2]
-    this.salesCard = this.statistic[3]
     this.loader = false
   }
 }
