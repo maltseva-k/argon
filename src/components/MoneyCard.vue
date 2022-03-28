@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="w-12 h-12 bg-blue-600 rounded-lg flex justify-center items-center align-middle">
-      <img src="../images/MoneyCard.svg" class="w-3/4 h-3/4" alt="Money card">
+      <slot name="icon"></slot>
     </div>
   </div>
 </template>

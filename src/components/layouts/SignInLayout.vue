@@ -4,20 +4,15 @@
         <main-loader v-if="isLoading"/>
         <router-view />
       </main>
-      <div class="bg-white absolute bottom-0 left-0 w-full">
-        <footer-of-page />
-      </div>
     </div>
 </template>
 
 <script>
-import FooterOfPage from '@/components/FooterOfPage'
 import MainLoader from '@/components/MainLoader'
 
 export default {
   components: {
-    MainLoader,
-    FooterOfPage
+    MainLoader
   },
   data () {
     return {

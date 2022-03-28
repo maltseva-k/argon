@@ -1,27 +1,20 @@
 <template>
-  <div class="">
-    <div class="-z-10 h-96 bg-no-repeat bg-cover bg-center rounded-3xl bg-top mt-5 mr-5 ml-5 bg-[url('/src/images/BackgroundCitySmall.png')] ">
+  <div class="h-screen">
+    <div class="h-96 bg-no-repeat bg-cover bg-center rounded-3xl bg-top mt-5 mr-5 ml-5 bg-[url('/src/images/BackgroundCitySmall.png')] ">
     </div>
-    <div class="absolute top-5 w-full pl-5 pr-5">
-      <main>
+    <main class="absolute z-10 w-full top-5">
         <main-loader v-if="isLoading" />
         <router-view />
       </main>
-    </div>
-    <div class="bg-white absolute bottom-0 left-0 w-full">
-      <footer-of-page />
-    </div>
   </div>
 </template>
 
 <script>
-import FooterOfPage from '@/components/FooterOfPage'
 import MainLoader from '@/components/MainLoader'
 
 export default {
   components: {
-    MainLoader,
-    FooterOfPage
+    MainLoader
   },
   data () {
     return {

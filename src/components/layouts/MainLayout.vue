@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')] bg-slate-50 max-h-screen">
+  <div class="bg-no-repeat bg-[url('/src/images/BackgroundMain.png')] bg-slate-50">
     <div class="flex pt-5"
     style="height: 100%">
       <side-bar

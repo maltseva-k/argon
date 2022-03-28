@@ -3,10 +3,17 @@
     <div v-else>
       <div class="flex justify-around g-x-2 mb-5">
         <money-card
-          :increment="moneyCard.increment"
-          :indicator="moneyCard.indicator"
+          v-for="item in dashboardItems"
+          :key="item.card"
+          :increment="item.increment"
+          :indicator="item.indicator"
           class="w-1/4 shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl"
-        />
+        >
+          <template v-slot:icon>
+            <img :src="item.icon" class="w-3/4 h-3/4" alt="Money card">
+          </template>
+        </money-card>
+
         <users-card
           :increment="usersCard.increment"
           :indicator="usersCard.indicator"
@@ -45,10 +52,6 @@
           <social-table />
         </div>
       </div>
-      <div class="static bottom-0 left-0 w-full">
-        <footer-of-page
-        />
-      </div>
     </div>
 </template>
 
@@ -61,7 +64,6 @@ import ClientCard from '@/components/ClientCard'
 import SaleCard from '@/components/SaleCard'
 import UsersCard from '@/components/UsersCard'
 import MainLoader from '@/components/MainLoader'
-import FooterOfPage from '@/components/FooterOfPage'
 import TotalSaleScale from '@/components/TotalSaleScale'
 
 export default {
@@ -91,7 +93,6 @@ export default {
   },
   components: {
     TotalSaleScale,
-    FooterOfPage,
     MainLoader,
     UsersCard,
     SaleCard,
@@ -99,6 +100,16 @@ export default {
     MoneyCard,
     TableVisitorsDashboard,
     SocialTable
+  },
+  computed: {
+    dashboardItems () {
+      return [
+        {
+          ...this.moneyCard,
+          icon: require('../images/MoneyCard.svg')
+        }
+      ]
+    }
   },
   async mounted () {
     this.orders = await this.$store.dispatch('fetchOrders')

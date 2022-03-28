@@ -37,10 +37,6 @@
         :isNextDisabled="isNextDisabled"
       />
     </div>
-    <div class="fixed bottom-0 left-0 w-full">
-      <footer-of-page
-      />
-    </div>
   </div>
 </template>
 <script>
@@ -48,11 +44,10 @@ import CreateANewCard from '@/components/CreateANewCard'
 import SettingCardForProfile from '@/components/SettingCardForProfile'
 import UsersProjectCard from '@/components/UsersProjectCard'
 import MainLoader from '@/components/MainLoader'
-import FooterOfPage from '@/components/FooterOfPage'
 import PaginateButtons from '@/components/PaginateButtons'
 
 export default {
-  components: { PaginateButtons, FooterOfPage, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
+  components: { PaginateButtons, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
   data () {
     return {
       usersProjects: [],

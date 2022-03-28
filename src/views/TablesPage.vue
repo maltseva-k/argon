@@ -41,10 +41,6 @@
         </div>
       </div>
     </div>
-    <div class="fixed bottom-0 left-0 w-full">
-      <footer-of-page
-      />
-    </div>
   </div>
 
 </template>
@@ -52,13 +48,11 @@
 import TableWithHoverState from '@/components/TableWithHoverState'
 import TableWithScale from '@/components/TableWithScale'
 import MainLoader from '@/components/MainLoader'
-import FooterOfPage from '@/components/FooterOfPage'
 import PaginateButtons from '@/components/PaginateButtons'
 
 export default {
   components: {
     PaginateButtons,
-    FooterOfPage,
     MainLoader,
     TableWithScale,
     TableWithHoverState
