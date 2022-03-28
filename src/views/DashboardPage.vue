@@ -77,18 +77,7 @@ export default {
       clientCard: {},
       salesCard: {},
       statistic: [],
-      loader: true,
-      coffeeLabels: ['One', 'Two', 'Free'],
-      coffeeDatasets: [
-        {
-          name: 'Ben',
-          values: [1, 3, 2]
-        },
-        {
-          name: 'Tim',
-          values: [1, 3, 1]
-        }
-      ]
+      loader: true
     }
   },
   components: {

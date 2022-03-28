@@ -12,8 +12,8 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 
-import 'charts.css'
-import VueChartsCSS from 'vue.charts.css'
+import { Chart, registerables } from 'chart.js'
+Chart.register(...registerables)
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDA04rN5cjeCMIqYS48fVYZn1CefxIub9I',
@@ -31,7 +31,7 @@ firebase.initializeApp(firebaseConfig)
 let app
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
-    app = createApp(App).use(router).use(store).use(VueChartsCSS).mount('#app')
+    app = createApp(App).use(router).use(store).mount('#app')
   }
 })
 

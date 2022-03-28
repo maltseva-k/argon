@@ -11,13 +11,13 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    meta: { layout: 'SignIn' },
+    meta: { layout: 'SignIn', notAuth: true },
     component: () => import('../views/LoginPage')
   },
   {
     path: '/register',
     name: 'register',
-    meta: { layout: 'SignUp' },
+    meta: { layout: 'SignUp', notAuth: true },
     component: () => import('../views/RegisterPage')
   },
   {
@@ -31,6 +31,12 @@ const routes = [
     name: 'table',
     meta: { layout: 'Main', auth: true },
     component: () => import('../views/TablesPage')
+  },
+  {
+    path: '/pageunderconstruction',
+    name: 'StubPage',
+    meta: { layout: 'SignIn' },
+    component: () => import('../views/StubPage')
   },
   {
     path: '/:pathMatch(.*)*',
@@ -50,6 +56,8 @@ router.beforeEach((to, from, next) => {
 
   if (to.meta.auth && !currentUser) {
     next('/login?message=login')
+  } else if (currentUser && to.meta.notAuth) {
+    next('/')
   } else {
     next()
   }
