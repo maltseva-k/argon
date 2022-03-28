@@ -29,16 +29,9 @@
                 {{ social.visitors }}
               </td>
               <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <div>
-
-                  <div class="flex justify-between mb-1">
-                    <span class="text-sm font-medium text-blue-700 dark:text-white">{{ social.percent }}</span>
-                  </div>
-                  <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                    <div class="bg-blue-600 h-2.5 rounded-full" :style="{width: social.percent}"></div>
-                  </div>
-
-                </div>
+                <scale-with-span
+                  :completion="social.percent"
+                />
               </td>
             </tr>
             </tbody>
@@ -50,7 +43,9 @@
 </template>
 
 <script>
+import ScaleWithSpan from '@/components/ScaleWithSpan'
 export default {
+  components: { ScaleWithSpan },
   data () {
     return {
       socials: []

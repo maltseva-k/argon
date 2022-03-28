@@ -7,15 +7,10 @@
           <span class="text-base font-medium text-blue-700 dark:text-white">{{ order.month }}</span>
           <span class="text-sm font-medium text-blue-700 dark:text-white">{{ order.sales }}</span>
         </div>
-
-        <div class="w-full h-4 bg-slate-300 rounded-full dark:bg-gray-700">
-          <div
-            class="h-4 bg-blue-500 rounded-full dark:bg-gray-300"
-            :style="{width: (100 * (order.sales) / totalSale) + '%' }"
-          >
-
-          </div>
-        </div>
+        <scale-without-span
+          :completion="(100 * (order.sales) / totalSale) + '%'"
+          class="h-6"
+        />
       </li>
     </ul>
 
@@ -25,9 +20,10 @@
 
 <script>
 import MainLoader from '@/components/MainLoader'
+import ScaleWithoutSpan from '@/components/ScaleWithoutSpan'
 
 export default {
-  components: { MainLoader },
+  components: { ScaleWithoutSpan, MainLoader },
   data () {
     return {
       loading: true,

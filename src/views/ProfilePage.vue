@@ -1,7 +1,9 @@
 <template>
   <main-loader v-if="loader" />
   <div v-else>
-    <div class="flex justify-around">
+    <div class="flex justify-around gap-x-5">
+      <white-card-with-title
+        class="w-1/3"></white-card-with-title>
       <setting-card-for-profile
         class="w-1/3 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md"/>
       <create-a-new-card
@@ -45,9 +47,10 @@ import SettingCardForProfile from '@/components/SettingCardForProfile'
 import UsersProjectCard from '@/components/UsersProjectCard'
 import MainLoader from '@/components/MainLoader'
 import PaginateButtons from '@/components/PaginateButtons'
+import WhiteCardWithTitle from '@/components/WhiteCardWithTitle'
 
 export default {
-  components: { PaginateButtons, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
+  components: { WhiteCardWithTitle, PaginateButtons, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
   data () {
     return {
       usersProjects: [],

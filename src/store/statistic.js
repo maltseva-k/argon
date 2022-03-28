@@ -20,7 +20,6 @@ export default {
             title: someInfo[key].title,
             indicator: someInfo[key].indicator,
             increment: someInfo[key].increment,
-            img: someInfo[key].img,
             card: key
           })
         })
