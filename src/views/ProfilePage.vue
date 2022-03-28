@@ -18,7 +18,7 @@
             <li
               v-for="project in projectsOnThisPage"
               :key="project.id"
-              class="w-1/3 min-w-min max-w-sm bg-white rounded-lg border hover:border-gray-200 hover:shadow-md dark:bg-gray-800 dark:border-gray-700"
+              class="w-1/3"
               >
               <users-project-card
                 @deleteProject="deleteProject"
@@ -67,7 +67,8 @@ export default {
     }
   },
   async mounted () {
-    this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
+    await this.updateProjectsList()
+    /* this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
     if (this.usersProjects.length <= 3) {
       this.projectsOnThisPage = this.usersProjects
     }
@@ -76,16 +77,30 @@ export default {
       this.showPaginate = true
       this.isPrevDisabled = true
     }
-    this.isPrevDisabled = true
+    this.isPrevDisabled = true */
     this.loader = false
   },
   methods: {
+    async updateProjectsList () {
+      this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
+      if (this.usersProjects.length <= 3) {
+        this.projectsOnThisPage = this.usersProjects
+      }
+      if (this.usersProjects.length > 3) {
+        this.projectsOnThisPage = this.usersProjects.slice(0, 3)
+        this.showPaginate = true
+        this.isPrevDisabled = true
+      }
+      this.isPrevDisabled = true
+    },
     deleteProject (id) {
-      this.updateCount += 1
-      this.usersProjects = this.usersProjects.filter(p => p.id !== id)
+      this.projectsOnThisPage = this.projectsOnThisPage.filter(p => p.id !== id)
+      this.updateProjectsList()
+      this.updateCount -= 2
     },
     async createProject () {
-      this.usersProjects = await this.$store.dispatch('fetchThisUsersProjects')
+      this.updateProjectsList()
+      this.updateCount += 2
     },
     showPrevPage () {
       this.thisPage -= 1
