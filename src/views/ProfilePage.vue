@@ -3,14 +3,20 @@
   <div v-else>
     <div class="flex justify-around gap-x-5">
       <white-card-with-title
-        class="w-1/3"></white-card-with-title>
+        class="w-1/3">
+        <template v-slot:forms>
+          <forms-about-me />
+        </template>
+      </white-card-with-title>
       <setting-card-for-profile
-        class="w-1/3 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md"/>
+        class="w-1/3"
+      />
       <create-a-new-card
+        class="w-1/3"
         @createProject="createProject"
-        class="w-1/3 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md" />
+      />
     </div>
-    <div class="container bg-white border rounded-lg shadow-lg shadow-grey-300/50 p-5 mt-10 ml-5">
+    <div class="container bg-white border rounded-lg shadow-lg shadow-grey-300/50 p-5 mt-10">
       <h2 class="mb-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">My projects</h2>
         <ul
           :key="updateCount"
@@ -43,14 +49,15 @@
 </template>
 <script>
 import CreateANewCard from '@/components/CreateANewCard'
-import SettingCardForProfile from '@/components/SettingCardForProfile'
 import UsersProjectCard from '@/components/UsersProjectCard'
 import MainLoader from '@/components/MainLoader'
 import PaginateButtons from '@/components/PaginateButtons'
 import WhiteCardWithTitle from '@/components/WhiteCardWithTitle'
+import FormsAboutMe from '@/components/FormsAboutMe'
+import settingCardForProfile from '@/components/SettingCardForProfile'
 
 export default {
-  components: { WhiteCardWithTitle, PaginateButtons, MainLoader, UsersProjectCard, SettingCardForProfile, CreateANewCard },
+  components: { WhiteCardWithTitle, FormsAboutMe, PaginateButtons, MainLoader, UsersProjectCard, CreateANewCard, settingCardForProfile },
   data () {
     return {
       usersProjects: [],
