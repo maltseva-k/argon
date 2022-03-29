@@ -4,9 +4,6 @@
     <div class="flex justify-around gap-x-5">
       <white-card-with-title
         class="w-1/3">
-        <template v-slot:forms>
-          <forms-about-me />
-        </template>
       </white-card-with-title>
       <setting-card-for-profile
         class="w-1/3"
@@ -53,11 +50,17 @@ import UsersProjectCard from '@/components/UsersProjectCard'
 import MainLoader from '@/components/MainLoader'
 import PaginateButtons from '@/components/PaginateButtons'
 import WhiteCardWithTitle from '@/components/WhiteCardWithTitle'
-import FormsAboutMe from '@/components/FormsAboutMe'
 import settingCardForProfile from '@/components/SettingCardForProfile'
 
 export default {
-  components: { WhiteCardWithTitle, FormsAboutMe, PaginateButtons, MainLoader, UsersProjectCard, CreateANewCard, settingCardForProfile },
+  components: {
+    WhiteCardWithTitle,
+    PaginateButtons,
+    MainLoader,
+    UsersProjectCard,
+    CreateANewCard,
+    settingCardForProfile
+  },
   data () {
     return {
       usersProjects: [],
