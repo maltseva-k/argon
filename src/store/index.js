@@ -6,6 +6,7 @@ import social from './social'
 import orders from './orders'
 import visitors from './visitors'
 import statistic from './statistic'
+import sales from './sales'
 
 export default createStore({
   state: {
@@ -31,6 +32,7 @@ export default createStore({
     social,
     orders,
     visitors,
-    statistic
+    statistic,
+    sales
   }
 })
