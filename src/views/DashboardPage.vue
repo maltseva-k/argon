@@ -13,10 +13,12 @@
           />
       </div>
       <div class="w-full flex justify-between gap-x-8">
-        <div class="basis-2/3 p-0">
-          <img src="../images/SalesImageDashboard.png">
+        <div class="basis-2/3 p-0 bg-white text-scale-900 items-center rounded-lg shadow-lg shadow-grey-300/50 pt-5">
+          <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Sales overview</h2>
+<!--          <img src="../images/SalesImageDashboard.png">-->
+          <chart-dashboard :chart-data="chartData" :options="chartOptions" />
         </div>
-        <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 basis-1/3 my-2">
+        <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 basis-1/3">
           <h3 class="text-lg pl-5 font-bold font-sans tracking-wide text-slate-300">PERFORMANCE</h3>
           <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Total orders</h2>
           <total-sale-scale />
@@ -44,6 +46,8 @@ import TableVisitorsDashboard from '@/components/TableVisitorsDashboard'
 import MainLoader from '@/components/MainLoader'
 import TotalSaleScale from '@/components/TotalSaleScale'
 import CardForDashboard from '@/components/CardForDashboard'
+import { defineAsyncComponent } from 'vue'
+const ChartDashboard = defineAsyncComponent(() => import('@/components/ChartDashboard'))
 
 export default {
   name: 'DashboardPage',
@@ -56,7 +60,38 @@ export default {
       clientCard: {},
       salesCard: {},
       statistic: [],
-      loader: true
+      yearsSales: [],
+      loader: true,
+      chartData: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ],
+        datasets: [
+          {
+            label: 'Sales',
+            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11],
+            borderColor: 'rgb(51, 132, 207)'
+          }
+        ]
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+          padding: 8
+        }
+      }
     }
   },
   components: {
@@ -64,22 +99,16 @@ export default {
     TotalSaleScale,
     MainLoader,
     TableVisitorsDashboard,
-    SocialTable
-  },
-  computed: {
-    dashboardItems () {
-      return [
-        {
-          ...this.moneyCard,
-          icon: require('../images/MoneyCard.svg')
-        }
-      ]
-    }
+    SocialTable,
+    ChartDashboard
   },
   async mounted () {
     this.orders = await this.$store.dispatch('fetchOrders')
     this.visitors = await this.$store.dispatch('fetchVisitors')
     this.statistic = await this.$store.dispatch('fetchStatistic')
+    const year = 2021
+    this.yearsSales = await this.$store.dispatch('fetchSales', year)
+
     this.loader = false
   }
 }
