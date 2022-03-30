@@ -1,5 +1,9 @@
 <template>
-  <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 py-5 px-10 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md">
+  <div class="relative bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 py-5 px-10 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md">
+      <message-component
+        v-if="isMessageVisible"
+        :message="'Project successfully created'"
+      />
       <h2 class="mb-1 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Create a new project</h2>
       <form class="w-full">
         <label for="title" class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Title</label>
@@ -52,11 +56,13 @@
 <script>
 
 import ButtonBlue from '@/components/ButtonBlue/ButtonBlue'
+import MessageComponent from '@/components/MessageComponent'
+
 export default {
-  components: { ButtonBlue },
+  components: { MessageComponent, ButtonBlue },
   data () {
     return {
-      isModalOpen: false,
+      isMessageVisible: false,
       title: '',
       budget: '',
       status: '',
@@ -76,8 +82,16 @@ export default {
       this.budget = ''
       this.status = ''
       this.completion = ''
-      console.log('Project create!')
+      this.isMessageVisible = true
+      this.closeMessage()
       this.$emit('createProject')
+    },
+    closeMessage () {
+      const vm = this
+      setTimeout(function () {
+        vm.isMessageVisible = false
+        console.log('timeout')
+      }, 1900)
     }
   }
 }

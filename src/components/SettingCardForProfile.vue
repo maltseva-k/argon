@@ -1,6 +1,10 @@
 <template>
-  <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md">
+  <div class="relative bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 min-h-min bg-white rounded-lg shadow-lg shadow-grey-300/50 p-5 border border-gray-200 shadow-md">
     <h2 class="1 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">About me</h2>
+    <message-component
+      v-if="isMessageVisible"
+      :message="'Personal data updated successfully'"
+    />
     <form>
       <div>
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
@@ -51,13 +55,15 @@
 
 <script>
 import ButtonBlue from '@/components/ButtonBlue/ButtonBlue'
+import MessageComponent from '@/components/MessageComponent'
 export default {
-  components: { ButtonBlue },
+  components: { MessageComponent, ButtonBlue },
   data () {
     return {
       name: '',
       email: '',
-      userFunction: ''
+      userFunction: '',
+      isMessageVisible: false
     }
   },
   async mounted () {
@@ -74,6 +80,15 @@ export default {
         userFunction: this.userFunction
       }
       await this.$store.dispatch('updateUserInfo', formData)
+      this.isMessageVisible = true
+      this.closeMessage()
+    },
+    closeMessage () {
+      const vm = this
+      setTimeout(function () {
+        vm.isMessageVisible = false
+        console.log('timeout')
+      }, 1900)
     }
   }
 }
