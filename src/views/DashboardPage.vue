@@ -15,7 +15,7 @@
       <div class="w-full flex justify-between gap-x-8">
         <div class="basis-2/3 p-0 bg-white text-scale-900 items-center rounded-lg shadow-lg shadow-grey-300/50 pt-5">
           <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Sales overview</h2>
-          <chart-dashboard :sales="yearsSales" :orders="orders" />
+          <chart-dashboard :thisYear="thisYear" :lastYear="lastYear" :thisYearSales="thisYearsSales" :lastYearSales="lastYearsSales" />
         </div>
         <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 basis-1/3">
           <h3 class="text-lg pl-5 font-bold font-sans tracking-wide text-slate-300">PERFORMANCE</h3>
@@ -52,7 +52,10 @@ export default {
   name: 'DashboardPage',
   data () {
     return {
-      year: 2021,
+      thisYear: 2022,
+      lastYear: 2021,
+      thisYearsSales: [],
+      lastYearsSales: [],
       orders: [],
       visitors: [],
       moneyCard: {},
@@ -60,7 +63,6 @@ export default {
       clientCard: {},
       salesCard: {},
       statistic: [],
-      yearsSales: [],
       loader: true
     }
   },
@@ -76,7 +78,8 @@ export default {
     this.orders = await this.$store.dispatch('fetchOrders')
     this.visitors = await this.$store.dispatch('fetchVisitors')
     this.statistic = await this.$store.dispatch('fetchStatistic')
-    this.yearsSales = await this.$store.dispatch('fetchSales', this.year)
+    this.lastYearsSales = await this.$store.dispatch('fetchSales', this.lastYear)
+    this.thisYearsSales = await this.$store.dispatch('fetchSales', this.thisYear)
 
     this.loader = false
   }

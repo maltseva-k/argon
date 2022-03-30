@@ -10,12 +10,20 @@ import Chart from 'chart.js/auto'
 export default {
   name: 'ChartDashboard',
   props: {
-    sales: {
+    lastYearSales: {
       type: Array,
       default: null
     },
-    orders: {
+    thisYearSales: {
       type: Array,
+      default: null
+    },
+    thisYear: {
+      type: String,
+      default: null
+    },
+    lastYear: {
+      type: String,
       default: null
     }
   },
@@ -28,13 +36,13 @@ export default {
       data: {
         datasets: [
           {
-            label: 'Sales 2021',
-            data: this.sales,
+            label: 'Sales' + this.lastYear,
+            data: this.lastYearSales,
             borderColor: 'rgb(51, 132, 207)'
           },
           {
-            label: 'Sales 2022',
-            data: this.orders,
+            label: 'Sales' + this.thisYear,
+            data: this.thisYearSales,
             borderColor: 'rgb(20, 100, 112)'
           }
         ]
