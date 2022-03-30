@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="flex justify-start text-sm">
-      <p class="text-green-500">{{ increment }}</p>
+      <p :class="colorOfText">{{ increment }}</p>
       <p class="ml-2 text-slate-300">Since last month</p>
       </div>
   </div>
@@ -34,19 +34,18 @@ export default {
   },
   data () {
     return {
-      itemImage: ''
+      itemImage: '',
+      colorOfText: 'text-green-500'
     }
   },
   mounted () {
     const fileName = this.card
     this.itemImage = require(`../images/${fileName}.svg`)
+    if (this.increment.includes('-')) {
+      this.colorOfText = 'text-red-500'
+    } else {
+      this.colorOfText = 'text-green-500'
+    }
   }
-/*   computed: {
-    itemImage () {
-      const fileName = this.card
-      console.log(fileName)
-      console.log(require(`../images/${fileName}.svg`))
-      return require(`../images/${fileName}.svg`)
-    } */
 }
 </script>
