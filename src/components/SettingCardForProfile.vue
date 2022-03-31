@@ -56,17 +56,34 @@
 <script>
 import ButtonBlue from '@/components/ButtonBlue/ButtonBlue'
 import MessageComponent from '@/components/MessageComponent'
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength } from '@vuelidate/validators'
+
 export default {
   components: { MessageComponent, ButtonBlue },
   data () {
     return {
+      v$: useVuelidate(),
       name: '',
       email: '',
       userFunction: '',
       isMessageVisible: false
     }
   },
+  validations () {
+    return {
+      email: {
+        required,
+        email
+      },
+      password: { required, minLength: minLength(6) }
+    }
+  },
   async mounted () {
+    this.v$.$validate()
+    if (!this.v$.$error) {
+      console.log('ok')
+    }
     const user = await this.$store.dispatch('fetchUserInfo')
     this.name = user.name
     this.email = user.email

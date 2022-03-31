@@ -37,7 +37,7 @@ export default {
       type: String
     },
     budget: {
-      type: String
+
     },
     status: {
       type: String
@@ -51,9 +51,7 @@ export default {
   },
   methods: {
     async deleteThisProject () {
-      console.log('click')
       await this.$store.dispatch('deleteProject', this.id)
-      console.log(this.id)
       this.$emit('deleteProject', this.id)
     }
   }
