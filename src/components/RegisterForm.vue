@@ -31,7 +31,7 @@
           type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Name">
         <span
           v-if="v$.name.$error"
-          class="text-sm text-gray-500"
+          class="text-sm text-red-500"
         >
         {{ v$.name.$errors[0].$message }}
         </span>
@@ -44,7 +44,7 @@
           type="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com">
         <span
           v-if="v$.email.$error"
-          class="text-sm text-gray-500"
+          class="text-sm text-red-500"
         >
         {{ v$.email.$errors[0].$message }}
         </span>
@@ -57,7 +57,7 @@
           type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <span
           v-if="v$.password.$error"
-          class="text-sm text-gray-500"
+          class="text-sm text-red-500"
         >
         {{ v$.password.$errors[0].$message }}
         </span>

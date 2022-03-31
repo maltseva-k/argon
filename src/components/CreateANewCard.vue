@@ -16,7 +16,7 @@
 
         <span
           v-if="v$.title.$error"
-          class="text-sm text-gray-500"
+          class="text-sm text-red-500"
         >
         {{ v$.title.$errors[0].$message }}
         </span>
@@ -30,7 +30,7 @@
               type="text" name="budget" id="budget" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="10000" required="">
             <span
               v-if="v$.budget.$error"
-              class="text-sm text-gray-500"
+              class="text-sm text-red-500"
             >
         {{ v$.budget.$errors[0].$message }}
         </span>
@@ -44,7 +44,7 @@
               type="number" name="completion" id="completion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="10" required="">
             <span
               v-if="v$.completion.$error"
-              class="text-sm text-gray-500"
+              class="text-sm text-red-500"
             >
         {{ v$.completion.$errors[0].$message }}
         </span>
@@ -65,7 +65,7 @@
         </select>
         <span
           v-if="v$.status.$error"
-          class="text-sm text-gray-500"
+          class="text-sm text-red-500"
         >
         {{ v$.status.$errors[0].$message }}
         </span>

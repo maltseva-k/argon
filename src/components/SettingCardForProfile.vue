@@ -13,8 +13,16 @@
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
        </span>
           <input
-            v-model="name" type="text" id="name" class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie Green">
+            v-model="name"
+            :class="{'border-red-500': v$.name.$error}"
+            type="text" id="name" autocomplete="off" class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Bonnie Green">
         </div>
+        <span
+          v-if="v$.name.$error"
+          class="text-sm text-red-500"
+        >
+        {{ v$.name.$errors[0].$message }}
+        </span>
       </div>
 
       <div>
@@ -24,8 +32,17 @@
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
        </span>
           <input
-            v-model="email" type="text" id="email" class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="bonnie_green@mail.ru">
+            v-model="email"
+            :class="{'border-red-500': v$.email.$error}"
+            type="text" id="email" autocomplete="off" class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="bonnie_green@mail.ru">
+
         </div>
+        <span
+        v-if="v$.email.$error"
+        class="text-sm text-red-500"
+      >
+        {{ v$.email.$errors[0].$message }}
+        </span>
       </div>
 
       <div>
@@ -36,7 +53,7 @@
        </span>
           <input
             v-model="userFunction"
-            type="text" id="function" class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="manager">
+            type="text" id="function" autocomplete="off" class="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="manager">
         </div>
       </div>
       <div class="flex justify-end mt-4">
@@ -57,7 +74,7 @@
 import ButtonBlue from '@/components/ButtonBlue/ButtonBlue'
 import MessageComponent from '@/components/MessageComponent'
 import useVuelidate from '@vuelidate/core'
-import { required, email, minLength } from '@vuelidate/validators'
+import { required } from '@vuelidate/validators'
 
 export default {
   components: { MessageComponent, ButtonBlue },
@@ -72,18 +89,11 @@ export default {
   },
   validations () {
     return {
-      email: {
-        required,
-        email
-      },
-      password: { required, minLength: minLength(6) }
+      name: { required },
+      email: { required }
     }
   },
   async mounted () {
-    this.v$.$validate()
-    if (!this.v$.$error) {
-      console.log('ok')
-    }
     const user = await this.$store.dispatch('fetchUserInfo')
     this.name = user.name
     this.email = user.email
@@ -91,14 +101,17 @@ export default {
   },
   methods: {
     async updateUserInfo () {
-      const formData = {
-        name: this.name,
-        email: this.email,
-        userFunction: this.userFunction
+      this.v$.$validate()
+      if (!this.v$.$error) {
+        const formData = {
+          name: this.name,
+          email: this.email,
+          userFunction: this.userFunction
+        }
+        await this.$store.dispatch('updateUserInfo', formData)
+        this.isMessageVisible = true
+        this.closeMessage()
       }
-      await this.$store.dispatch('updateUserInfo', formData)
-      this.isMessageVisible = true
-      this.closeMessage()
     },
     closeMessage () {
       const vm = this
