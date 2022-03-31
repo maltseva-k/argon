@@ -9,10 +9,10 @@
           :increment="item.increment"
           :indicator="item.indicator"
           :card="item.card"
-          class="w-1/2 lg:w-1/4"
+          class="w-full md:w-2/3 lg:w-1/4"
           />
       </div>
-      <div class="w-full flex justify-between gap-x-8">
+      <div class="w-full flex flex-col gap-2 lg:flex-row justify-between lg:gap-x-8">
         <div class="basis-2/3 p-0 bg-white text-scale-900 items-center rounded-lg shadow-lg shadow-grey-300/50 pt-5">
           <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Sales overview</h2>
           <chart-dashboard :thisYear="thisYear" :lastYear="lastYear" :thisYearSales="thisYearsSales" :lastYearSales="lastYearsSales" />
@@ -23,7 +23,7 @@
           <total-sale-scale />
         </div>
       </div>
-      <div class="flex justify-between gap-x-8">
+      <div class="w-full flex flex-col gap-2 lg:flex-row justify-between lg:gap-x-8">
         <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 mt-5 basis-2/3">
           <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Page visits</h2>
           <table-visitors-dashboard
