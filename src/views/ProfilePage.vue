@@ -73,16 +73,6 @@ export default {
   },
   async mounted () {
     await this.updateProjectsList()
-    /* this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
-    if (this.usersProjects.length <= 3) {
-      this.projectsOnThisPage = this.usersProjects
-    }
-    if (this.usersProjects.length > 3) {
-      this.projectsOnThisPage = this.usersProjects.slice(0, 3)
-      this.showPaginate = true
-      this.isPrevDisabled = true
-    }
-    this.isPrevDisabled = true */
     this.loader = false
   },
   methods: {
@@ -90,16 +80,23 @@ export default {
       this.usersProjects = (await this.$store.dispatch('fetchThisUsersProjects')) || []
       if (this.usersProjects.length <= 3) {
         this.projectsOnThisPage = this.usersProjects
+        this.showPaginate = false
+        this.thisPage = 1
       }
       if (this.usersProjects.length > 3) {
         this.projectsOnThisPage = this.usersProjects.slice(0, 3)
         this.showPaginate = true
         this.isPrevDisabled = true
+        this.isNextDisabled = false
+        this.resetPagination()
       }
-      this.isPrevDisabled = true
     },
-    deleteProject (id) {
-      this.projectsOnThisPage = this.projectsOnThisPage.filter(p => p.id !== id)
+    resetPagination () {
+      this.thisPage = 1
+      this.startEl = 0
+      this.finishEl = 3
+    },
+    deleteProject () {
       this.updateProjectsList()
       this.updateCount -= 2
     },
