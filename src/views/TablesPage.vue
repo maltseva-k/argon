@@ -84,15 +84,19 @@ export default {
   },
   async mounted () {
     this.projects = await this.$store.dispatch('fetchProjects') || []
-    if (this.projects.length > 1) {
+    if (this.projects.length > 3) {
       this.showProjectPaginate = true
       this.projectsOnThisPage = this.projects.slice(0, 3)
+    } else {
+      this.projectsOnThisPage = this.projects
     }
     this.isPrevProjectsDisabled = true
     this.users = await this.$store.dispatch('fetchAllUsers') || []
-    if (this.users.length > 1) {
+    if (this.users.length > 3) {
       this.showUsersPaginate = true
       this.usersOnThisPage = this.users.slice(0, 3)
+    } else {
+      this.usersOnThisPage = this.users
     }
     this.isPrevUsersDisabled = true
     this.loader = false
