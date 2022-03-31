@@ -1,21 +1,21 @@
 <template>
-  <div class="flex flex-col cursor-default">
+  <div class="flex flex-col cursor-default w-full">
     <div class="overflow-x-auto">
       <div class="inline-block min-w-full align-middle">
         <div class="overflow-hidden ">
           <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
             <thead class="bg-gray-100 dark:bg-gray-700">
             <tr>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="pl-5 py-3 px-2 lg:px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Name
               </th>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="py-3 px-2 lg:px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Email
               </th>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="py-3 px-2 lg:px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Function
               </th>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="py-3 px-2 lg:px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Status
               </th>
             </tr>
@@ -26,16 +26,16 @@
               :key="user.uid"
               class="hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td class="pl-5 py-4 px-2 lg:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ user.name }}
               </td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+              <td class="py-4 px-2 lg:px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                 {{ user.email }}
               </td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td class="py-4 px-2 lg:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ user.userFunction }}
               </td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td class="py-4 px-2 lg:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 online
               </td>
             </tr>

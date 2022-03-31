@@ -6,16 +6,16 @@
           <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
             <thead class="bg-gray-100 dark:bg-gray-700">
             <tr>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="pl-5  px-2 lg:px-6 py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Project title
               </th>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="px-2 lg:px-6 py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Budget
               </th>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="px-2 lg:px-6 py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Status
               </th>
-              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+              <th scope="col" class="px-2 lg:px-6 py-3  text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                 Completion
               </th>
             </tr>
@@ -25,16 +25,16 @@
               v-for="project in projects"
               :key="project.id"
               class="hover:bg-gray-100 dark:hover:bg-gray-700">
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td class="pl-5  py-4 px-2 lg:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ project.title }}
               </td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+              <td class="py-4 px-2 lg:px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                 {{ project.budget }}
               </td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td class="py-4 px-2 lg:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ project.status }}
               </td>
-              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <td class="py-4 px-2 lg:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <scale-component
                   :completion="project.completion"
                 />
