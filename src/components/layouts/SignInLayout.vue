@@ -1,6 +1,6 @@
 <template>
-    <div class="pt-40 pb-40 bg-no-repeat bg-top bg-[url('/src/images/BackgroundCity.png')]">
-      <main >
+    <div class="w-full pt-20 pb-20 bg-no-repeat bg-top bg-[url('/src/images/BackgroundCity.png')]">
+      <main class="w-full">
         <main-loader v-if="isLoading"/>
         <router-view />
       </main>

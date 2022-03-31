@@ -1,6 +1,5 @@
 <template>
-  <div class=" h-2/3 mt-10"></div>
-  <div class=" min-w-min bg-white ml-auto mr-auto mt-18 rounded-2xl p-10 w-1/3 shadow-md">
+  <div class="lg:w-1/3 sm:w-3/5 mx-auto w-4/5 min-w-min bg-white rounded-2xl p-10 mb-10 shadow-md">
     <div class="mt-2 text-center align-middle font-sans font-bold text-9xl tracking-wide text-blue-500 ml-auto mr-auto mb-20 ">404</div>
     <div class="text-medium text-center text-xl font-sans align-middle mt-auto ml-auto mb-auto">
       <h1 class="mt-2 font-bold text-lg mb-2">Page Not Found</h1>

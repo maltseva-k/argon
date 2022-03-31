@@ -1,11 +1,11 @@
 <template>
-  <div class="h-screen">
-    <div class="h-96 bg-no-repeat bg-cover bg-center rounded-3xl bg-top mt-5 mr-5 ml-5 bg-[url('/src/images/BackgroundCitySmall.png')] ">
+  <div class="h-screen relative w-full">
+    <div class="h-96 bg-no-repeat bg-cover bg-center lg:rounded-3xl bg-top mt-5 mr-0 ml-0 lg:mr-5 lg:ml-5 bg-[url('/src/images/BackgroundCitySmall.png')]">
     </div>
-    <main class="absolute z-10 w-full top-5">
+    <main class="w-full absolute top-5">
         <main-loader v-if="isLoading" />
         <router-view />
-      </main>
+    </main>
   </div>
 </template>
 
