@@ -28,13 +28,26 @@
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label>
         <input
           v-model="email"
-          type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" required="">
+          :class="{'border-red-500': v$.email.$error}"
+          type="text" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@flowbite.com" >
+        <span
+          v-if="v$.email.$error"
+          class="text-sm text-gray-500"
+        >
+        {{ v$.email.$errors[0].$message }}
+        </span>
       </div>
       <div class="mb-5">
         <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Password</label>
         <input
           v-model="password"
-          type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+          :class="{'border-red-500': v$.password.$error}"
+          type="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <span v-if="v$.password.$error"
+              class="text-sm text-gray-500"
+        >
+        {{ v$.password.$errors[0].$message }}
+</span>
       </div>
       <button type="submit" class=" w-full text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700">
         Sign In
@@ -49,25 +62,39 @@
 </template>
 
 <script>
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength } from '@vuelidate/validators'
+
 export default {
   data () {
     return {
+      v$: useVuelidate(),
       email: '',
       password: ''
     }
   },
+  validations () {
+    return {
+      email: {
+        required,
+        email
+      },
+      password: { required, minLength: minLength(6) }
+    }
+  },
   methods: {
     async SubmitHandler () {
-      const formData = {
-        email: this.email,
-        password: this.password
+      this.v$.$validate()
+      if (!this.v$.$error) {
+        const formData = {
+          email: this.email,
+          password: this.password
+        }
+        await this.$store.dispatch('loginUser', formData)
+        await this.$router.push('/')
       }
-      console.log(formData)
-      await this.$store.dispatch('loginUser', formData)
-      await this.$router.push('/')
     },
     async LoginUserWithGoogle () {
-      console.log('вход через гугл')
       await this.$store.dispatch('loginUserWithGoogle')
       await this.$router.push('/')
     }
