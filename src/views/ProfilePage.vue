@@ -1,12 +1,12 @@
 <template>
   <main-loader v-if="loader" />
   <div v-else>
-    <div class="flex justify-around gap-x-5">
+    <div class="flex flex-col md:flex-row justify-around gap-5 w-full">
       <setting-card-for-profile
-        class="w-1/3"
+        class="w-full md:w-1/2 lg:w-1/3"
       />
       <create-a-new-card
-        class="w-1/3"
+        class="w-full md:w-1/2 lg:w-1/3"
         @createProject="createProject"
       />
     </div>
@@ -14,11 +14,11 @@
       <h2 class="mb-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">My projects</h2>
         <ul
           :key="updateCount"
-          class="flex justify-around w-full h-full">
+          class="flex flex-col md:flex-row gap-2 lg:gap-5 justify-around w-full">
             <li
               v-for="project in projectsOnThisPage"
               :key="project.id"
-              class="w-1/3"
+              class="w-full md:w-3/5 lg:w-1/3"
               >
               <users-project-card
                 @deleteProject="deleteProject"

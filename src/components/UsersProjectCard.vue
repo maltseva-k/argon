@@ -1,13 +1,13 @@
 <template>
-  <div class="max-w-sm min-w-min max-w-sm bg-white rounded-lg border hover:border-gray-200 hover:shadow-md dark:bg-gray-800 dark:border-gray-700 bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-    <div class="p-5">
-      <div class="flex justify-between uppercase">
-        <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {{ title }}</h5>
-        <p class="font-sans text-sm text-gray-700 dark:text-gray-400 bg-gray-200 p-2 rounded-lg">
+  <div class="min-h-full bg-white rounded-lg border hover:border-gray-200 hover:shadow-md dark:bg-gray-800 dark:border-gray-700 border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class=" p-5">
+      <div class="flex flex-row md:flex-col lg:flex-row justify-between uppercase">
+        <h5 class="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {{ title }}</h5>
+        <p class="font-sans rounded-md self-start text-sm text-gray-700 dark:text-gray-400 bg-gray-200 p-1 lg:p-2 lg:rounded-lg">
         {{ status }}
       </p>
       </div>
-      <p class="mb-3 text-gray-700 dark:text-gray-400 proportional-nums text-medium text-xl font-sans">
+      <p class="mb-3 text-gray-700 dark:text-gray-400 proportional-nums text-medium lg:text-xl font-sans">
         {{ budget + '$'}}
       </p>
       <scale-with-span
