@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl p-5 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+  <div class="shadow-lg shadow-grey-300/50 hover:border-blue-500 hover:shadow-xl p-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
     <div class="flex justify-between mb-2 items-center">
       <div class="block">
         <h3 class="text-lg font-bold font-sans tracking-wide text-slate-300 pt-0">{{ title }}</h3>

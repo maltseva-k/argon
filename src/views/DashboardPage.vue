@@ -1,7 +1,7 @@
 <template>
   <main-loader v-if="loader" />
     <div v-else>
-      <div class="flex justify-around g-x-2 mb-5 gap-x-5">
+      <div class="flex flex-col gap-2 lg:flex-row md:flex-col sm:flex-col justify-around lg:g-x-5 md:gap-4 lg:gap-5 mb-5">
         <card-for-dashboard
           v-for="item in statistic"
           :key="item.card"
@@ -9,7 +9,7 @@
           :increment="item.increment"
           :indicator="item.indicator"
           :card="item.card"
-          class="w-1/4"
+          class="w-1/2 lg:w-1/4"
           />
       </div>
       <div class="w-full flex justify-between gap-x-8">
