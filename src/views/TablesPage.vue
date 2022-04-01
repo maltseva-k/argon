@@ -100,7 +100,6 @@ export default {
     }
     this.isPrevUsersDisabled = true
     this.loader = false
-    console.log(this.users)
   },
   methods: {
     showPrevProjectsPage () {

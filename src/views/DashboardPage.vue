@@ -52,8 +52,8 @@ export default {
   name: 'DashboardPage',
   data () {
     return {
-      thisYear: 2022,
-      lastYear: 2021,
+      thisYear: '2022',
+      lastYear: '2021',
       thisYearsSales: [],
       lastYearsSales: [],
       orders: [],

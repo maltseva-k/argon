@@ -57,11 +57,9 @@ export default {
             id: key
           })
         })
-        console.log(projects)
         return projects
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     },
@@ -91,50 +89,15 @@ export default {
         })
         return projects
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     },
     async deleteProject ({ commit, dispatch }, id) {
       try {
-        const uid = await dispatch('getUid')
-        console.log(uid)
+        // const uid = await dispatch('getUid')
 
         await firebase.database().ref(`/projects/${id}`).remove()
-        console.log('удалено!')
-      } catch (e) {
-        commit('setError', e)
-        throw e
-      }
-    },
-    async UpdateCategory (
-      {
-        commit, dispatch
-      },
-      {
-        title,
-        limit,
-        id
-      }) {
-      try {
-        const uid = await dispatch('getUid')
-        await firebase.database().ref(`/users/${uid}/categories`).child(id).update({ title, limit })
-      } catch (e) {
-        commit('setError', e)
-        throw e
-      }
-    },
-    async fetchCategoryById ({
-      commit,
-      dispatch
-    }, id) {
-      try {
-        const uid = await dispatch('getUid')
-        let someCategory = (await firebase.database().ref(`/users/${uid}/categories`).child(id).once('value', snapshot => {
-          someCategory = snapshot.val() || {}
-        })).val()
-        return { ...someCategory, id }
       } catch (e) {
         commit('setError', e)
         throw e

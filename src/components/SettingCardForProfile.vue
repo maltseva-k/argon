@@ -117,7 +117,6 @@ export default {
       const vm = this
       setTimeout(function () {
         vm.isMessageVisible = false
-        console.log('timeout')
       }, 1900)
     }
   }

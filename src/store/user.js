@@ -20,7 +20,6 @@ export default {
     }) {
       try {
         const uid = await dispatch('getUid')
-        console.log(uid)
         const snapshot = await firebase
           .database()
           .ref(`/users/${uid}/info/`)
@@ -32,7 +31,6 @@ export default {
           userFunction: information.userFunction || '',
           uid
         }
-        console.log(userInfo)
         return userInfo
       } catch (e) {
 
@@ -76,8 +74,7 @@ export default {
         })
         return allUsers
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     }

@@ -10,7 +10,6 @@ export default {
       try {
         await firebase.auth().createUserWithEmailAndPassword(email, password)
         const uid = await dispatch('getUid')
-        console.log('uid: ' + uid)
         await firebase.database().ref(`/users/${uid}/info`).set({
           name: name
         })
@@ -19,15 +18,14 @@ export default {
         throw e
       }
     },
-    async loginUserWithGoogle ({ dispatch }) {
+    async loginUserWithGoogle ({ commit, dispatch }) {
       try {
         const provider = new firebase.auth.GoogleAuthProvider()
         await firebase
           .auth()
           .signInWithPopup(provider)
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     },

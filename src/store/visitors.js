@@ -21,11 +21,9 @@ export default {
             uniquevisitors: someVisitors[key].uniquevisitors
           })
         })
-        console.log(visitors)
         return visitors
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     }

@@ -26,8 +26,7 @@ export default {
 
         return statistic
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     }

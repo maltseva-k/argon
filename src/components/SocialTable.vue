@@ -53,7 +53,6 @@ export default {
   },
   async mounted () {
     this.socials = await this.$store.dispatch('fetchSocials')
-    console.log(this.socials)
   }
 
 }

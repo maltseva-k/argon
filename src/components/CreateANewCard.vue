@@ -112,7 +112,6 @@ export default {
   },
   methods: {
     async createProject () {
-      this.beforeCreateProject = false
       this.v$.$validate()
       if (!this.v$.$error) {
         const projectForm = {

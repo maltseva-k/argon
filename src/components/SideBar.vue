@@ -56,7 +56,6 @@ export default {
   methods: {
     async logout () {
       await this.$store.dispatch('logout')
-      console.log('вы вышли из системы!')
       await this.$router.push('/login')
     }
   }

@@ -125,7 +125,6 @@ export default {
       }
       this.projectsOnThisPage = this.usersProjects.slice(this.startEl, this.finishEl)
       this.updateCount += 1
-      // slice([begin[, end]])
     }
   }
 }

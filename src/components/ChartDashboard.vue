@@ -29,7 +29,6 @@ export default {
   },
   mounted () {
     const ctx = this.$refs.canvas.getContext('2d')
-    console.log(this.sales)
     // eslint-disable-next-line no-new
     new Chart(ctx, {
       type: 'line',
@@ -57,14 +56,3 @@ export default {
   }
 }
 </script>
-data: {
-datasets: [{
-data: [{id: 'Sales', nested: {value: 1500}}, {id: 'Purchases', nested: {value: 500}}]
-}]
-},
-options: {
-parsing: {
-xAxisKey: 'id',
-yAxisKey: 'nested.value'
-}
-}

@@ -24,11 +24,9 @@ export default {
             id: key
           })
         })
-        console.log(socials)
         return socials
       } catch (e) {
-        console.log(e)
-        /* commit('setError', e) */
+        commit('setError', e)
         throw e
       }
     }
