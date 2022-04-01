@@ -39,7 +39,7 @@
             <label for="completion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-gray-300">Completion, $</label>
             <input
               v-model="completion"
-              :class="{'border-red-500': v$.completion.$error}"
+              :class="{'border-red-500': v$.completion.$error }"
               autocomplete="off"
               type="number" name="completion" id="completion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="10" required="">
             <span
@@ -112,6 +112,7 @@ export default {
   },
   methods: {
     async createProject () {
+      this.beforeCreateProject = false
       this.v$.$validate()
       if (!this.v$.$error) {
         const projectForm = {
@@ -125,6 +126,7 @@ export default {
         this.budget = ''
         this.status = ''
         this.completion = ''
+        this.v$.$reset()
         this.isMessageVisible = true
         this.closeMessage()
         this.$emit('createProject')
@@ -134,7 +136,6 @@ export default {
       const vm = this
       setTimeout(function () {
         vm.isMessageVisible = false
-        console.log('timeout')
       }, 1900)
     }
   }
