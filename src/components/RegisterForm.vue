@@ -15,8 +15,11 @@
               <img class="w-10 h-10 mx-auto mt-4" src="../images/AppleIcon.svg" alt="AppleIcon">
             </button>
           </div>
-          <div class="w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg">
-            <button type="button" @click="LoginUserWithGoogle">
+          <div
+            class="cursor-pointer w-20 h-20 bg-white border-1 border border-gray-300 rounded-lg"
+            @click="LoginUserWithGoogle"
+          >
+            <button type="button">
               <img class="w-8 h-7 mx-auto mt-6" src="../images/GoogleIcon.svg" alt="GoogleIcon">
             </button>
           </div>
