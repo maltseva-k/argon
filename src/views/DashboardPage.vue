@@ -23,7 +23,7 @@
           <total-sale-scale />
         </div>
       </div>
-      <div class="w-full flex flex-col gap-2 lg:flex-row justify-between lg:gap-x-8">
+      <div class="w-full flex flex-col gap-2 lg:flex-row justify-between mb-5 lg:gap-x-8">
         <div class="bg-white rounded-lg shadow-lg shadow-grey-300/50 pt-5 pb-5 mt-5 basis-2/3">
           <h2 class="mb-5 pl-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">Page visits</h2>
           <table-visitors-dashboard

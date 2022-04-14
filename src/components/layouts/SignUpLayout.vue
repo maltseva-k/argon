@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full relative w-full">
+  <div class="relative w-full">
     <div class="h-96 bg-no-repeat bg-cover bg-center lg:rounded-3xl bg-top mt-5 mr-0 ml-0 lg:mr-5 lg:ml-5 bg-[url('/src/images/BackgroundCitySmall.png')]">
     </div>
     <main class="w-full absolute top-5">

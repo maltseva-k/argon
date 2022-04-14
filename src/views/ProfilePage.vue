@@ -10,7 +10,7 @@
         @createProject="createProject"
       />
     </div>
-    <div class="container bg-white border rounded-lg shadow-lg shadow-grey-300/50 p-5 mt-10">
+    <div class="container bg-white border rounded-lg shadow-lg shadow-grey-300/50 p-5 mb-5 mt-10">
       <h2 class="mb-5 text-xl uppercase font-bold font-sans tracking-wide text-slate-900">My projects</h2>
         <ul
           :key="updateCount"

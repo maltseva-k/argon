@@ -1,8 +1,8 @@
 <template>
-  <component :is="layout" class="h-full">
+  <component :is="layout" class="my_component">
     <router-view />
   </component>
-  <footer-of-page />
+  <footer-of-page class="my_footer" />
 </template>
 
 <script>
